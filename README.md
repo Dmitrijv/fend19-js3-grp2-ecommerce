@@ -13,4 +13,4 @@ value, ability to place order together with name
 Send order to API
 
 Extra features:
-Persistans cart The items in the cart should not change on refresh)
+Persistans cart The items in the cart should not change on refresh
