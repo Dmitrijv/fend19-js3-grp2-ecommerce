@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.scss";
+import { useState, useEffect } from 'react'
 import { Route, Switch } from "react-router-dom";
 
 import LayoutSimple from "./pages/LayoutSimple";
@@ -17,7 +18,7 @@ function App() {
     .then(response => {
 
       // console.log(Object.keys(response))
-      // console.log(Object.entries(response))
+      // console.log(Object.entries(response)) 
 
       setProducts(response)
     })
@@ -26,9 +27,13 @@ function App() {
   
   useEffect(() => {
     getAPI()
-    console.log(products);
+    // console.log(products);
     }, [])
-  
+  //   <ul>
+  //   { products && Object.entries(products).map(item => {
+  //     console.log(item);
+  //   })}
+  // </ul>
 
 
   return (
