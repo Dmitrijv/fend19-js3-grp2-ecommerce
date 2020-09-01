@@ -1,0 +1,13 @@
+div.header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
+  background-color: #3b455e;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 1px;
+  z-index: 2;
+
+  box-sizing: border-box;
+  padding: 2px 10px 0px 10px;
+  color: white;
+}
