@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
   const productCoverAlt = gallery[0] ? gallery[0].alt : `Cover image for this product.`;
   return (
     <div className="white-card product-card">
-      <Link to={`/product/123`}>
+      <Link to={`/product/${product.id}`}>
         <img className="product-cover-image" alt="image" src={productCoverSource} alt={productCoverAlt} />
       </Link>
       <h2>{product.name}</h2>
