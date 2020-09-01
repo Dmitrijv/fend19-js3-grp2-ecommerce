@@ -1,38 +1,37 @@
 import React from "react";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
+
+import ProductReviewCard from "../components/ProductReviewCard";
 
 export default function DetailPage(props) {
   const productId = props.match.params.productId;
-  let [reviews, setReviews] = useState([])
-  function fetchReviews(productId) {
-    // console.log(productId);
-    fetch(`https://mock-data-api.firebaseio.com/e-commerce/reviews/${productId}.json`)
-    .then(resp => resp.json())
-    .then(response => {
-      setReviews(response)
-      // console.log(response);
-    console.log("fetch called");
+  let [reviews, setReviews] = useState([]);
 
-    })
+  function fetchReviews(productId) {
+    fetch(`https://mock-data-api.firebaseio.com/e-commerce/reviews/${productId}.json`)
+      .then(resp => resp.json())
+      .then(response => {
+        setReviews(response);
+      });
   }
 
   useEffect(() => {
-    fetchReviews(productId)
-    console.log("useEffect called");
-    console.log(productId);
-    // console.log(reviews.length);
-  }, [])
-   
+    fetchReviews(productId);
+  }, []);
 
   return (
-    <div>
-      <h2>details about product with id {productId}</h2>
-      {reviews && reviews.map(item => {
-        // console.log(item);
-      return ( <h3>{item['date']}</h3> )
-
-        })
-      }
+    <div className="centered-container">
+      <div className="white-card product-details-card">
+        <h2>details about product with id {productId}</h2>
+        {reviews &&
+          reviews.map(item => {
+            return <h3>{item["date"]}</h3>;
+          })}
+      </div>
+      {reviews &&
+        Object.entries(reviews).map((review, index) => {
+          return <ProductReviewCard key={`review-card-${index}`} review={review} />;
+        })}
     </div>
   );
 }
