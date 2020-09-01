@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.scss";
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import LayoutSimple from "./pages/LayoutSimple";
@@ -9,39 +9,26 @@ import AboutPage from "./pages/AboutPage";
 import DetailPage from "./pages/DetailPage";
 
 function App() {
-  let [products, setProducts] = useState([])
-  
-  function getAPI() {
-    
-    fetch('https://mock-data-api.firebaseio.com/e-commerce/products.json')
-    .then(resp => resp.json())
-    .then(response => {
+  let [products, setProducts] = useState([]);
 
-      // console.log(Object.keys(response))
-      // console.log(Object.entries(response)) 
-
-      setProducts(response)
-    })
+  function getProducts() {
+    fetch("https://mock-data-api.firebaseio.com/e-commerce/products.json")
+      .then((resp) => resp.json())
+      .then((response) => {
+        setProducts(response);
+      });
   }
-  
-  
-  useEffect(() => {
-    getAPI()
-    // console.log(products);
-    }, [])
-  //   <ul>
-  //   { products && Object.entries(products).map(item => {
-  //     console.log(item);
-  //   })}
-  // </ul>
 
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div className="App">
       <Switch>
         <Route
           path="/product/:productId"
-          render={props => {
+          render={(props) => {
             return <LayoutSimple mainContent={<DetailPage {...props} />} />;
           }}
         />
@@ -49,7 +36,7 @@ function App() {
           <LayoutSimple mainContent={<AboutPage />} />
         </Route>
         <Route path={["/shop", "/"]}>
-          <LayoutSimple mainContent={<StartPage />} />
+          <LayoutSimple mainContent={<StartPage products={products} />} />
         </Route>
       </Switch>
     </div>
