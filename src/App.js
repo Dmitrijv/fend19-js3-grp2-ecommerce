@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path={["/home", "/home", "/"]}>
+        <Route path={["/shop", "/"]}>
           <LayoutSimple mainContent={<StartPage />} />
         </Route>
       </Switch>
