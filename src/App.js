@@ -5,8 +5,8 @@ import { Route, Switch } from "react-router-dom";
 
 import LayoutSimple from "./pages/LayoutSimple";
 import StartPage from "./pages/StartPage";
-import AboutPage from "./pages/AboutPage";
 import DetailPage from "./pages/DetailPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   let [products, setProducts] = useState([]);
@@ -32,8 +32,8 @@ function App() {
             return <LayoutSimple mainContent={<DetailPage products={products} {...props} />} />;
           }}
         />
-        <Route path={["/about"]}>
-          <LayoutSimple mainContent={<AboutPage />} />
+        <Route path={["/cart"]}>
+          <LayoutSimple mainContent={<CartPage />} />
         </Route>
         <Route path={["/shop", "/"]}>
           <LayoutSimple mainContent={<StartPage products={products} />} />

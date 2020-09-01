@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  // className="active" yoink this out for now
   return (
     <div className="header">
       <div className="centered-container">
@@ -9,12 +10,7 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <Link to={`/shop`} className="active">
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link to={`/about`}>About</Link>
+              <Link to={`/shop`}>Shop</Link>
             </li>
             <li>
               <Link to={`/cart`}>Cart (0)</Link>
