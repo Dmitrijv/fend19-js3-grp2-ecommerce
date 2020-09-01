@@ -28,6 +28,14 @@ export default function DetailPage(props) {
             return <h3>{item["date"]}</h3>;
           })}
       </div>
+
+      {// if there are no reviews show an appropriate message
+      (!reviews || reviews.length == 0) && (
+        <div className="white-card">
+          <p>There are no reviews for this product.</p>
+        </div>
+      )}
+
       {reviews &&
         Object.entries(reviews).map((review, index) => {
           return <ProductReviewCard key={`review-card-${index}`} review={review} />;
