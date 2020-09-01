@@ -8,7 +8,7 @@ export default function StartPage(props) {
     <div className="centered-container">
       {products &&
         Object.entries(products).map((product, index) => {
-          console.log(product);
+          // console.log(product);
           return <ProductCard key={`product-card-${index}`} product={product[1]} />;
         })}
     </div>

@@ -1,45 +1,32 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
-import ProductReviewCard from "../components/ProductReviewCard";
+import AddToCartButton from "./../components/AddToCartButton";
+import ReviewList from "../components/ReviewList";
 
 export default function DetailPage(props) {
   const productId = props.match.params.productId;
-  let [reviews, setReviews] = useState([]);
+  const product = props.products[productId];
+  console.log(product);
 
-  function fetchReviews(productId) {
-    fetch(`https://mock-data-api.firebaseio.com/e-commerce/reviews/${productId}.json`)
-      .then(resp => resp.json())
-      .then(response => {
-        setReviews(response);
-      });
-  }
+  // clear selected nav item
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
+    console.log("hello");
+    item.classList.remove("active");
+  });
 
-  useEffect(() => {
-    fetchReviews(productId);
-  }, []);
+  if (!product) return <div></div>; // cheeky return
 
   return (
     <div className="centered-container">
       <div className="white-card product-details-card">
-        <h2>details about product with id {productId}</h2>
-        {reviews &&
-          reviews.map(item => {
-            return <h3>{item["date"]}</h3>;
-          })}
+        <h3>Rated {product.rating} of 5</h3>
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <p>{product.stock} in stock</p>
+        <p>{product.price} sek</p>
+        <AddToCartButton productId={productId} />
       </div>
-
-      {// if there are no reviews show an appropriate message
-      (!reviews || reviews.length == 0) && (
-        <div className="white-card">
-          <p>There are no reviews for this product.</p>
-        </div>
-      )}
-
-      {reviews &&
-        Object.entries(reviews).map((review, index) => {
-          return <ProductReviewCard key={`review-card-${index}`} review={review} />;
-        })}
+      <ReviewList productId={productId} />
     </div>
   );
 }

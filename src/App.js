@@ -13,8 +13,8 @@ function App() {
 
   function getProducts() {
     fetch("https://mock-data-api.firebaseio.com/e-commerce/products.json")
-      .then((resp) => resp.json())
-      .then((response) => {
+      .then(resp => resp.json())
+      .then(response => {
         setProducts(response);
       });
   }
@@ -28,8 +28,8 @@ function App() {
       <Switch>
         <Route
           path="/product/:productId"
-          render={(props) => {
-            return <LayoutSimple mainContent={<DetailPage {...props} />} />;
+          render={props => {
+            return <LayoutSimple mainContent={<DetailPage products={products} {...props} />} />;
           }}
         />
         <Route path={["/about"]}>

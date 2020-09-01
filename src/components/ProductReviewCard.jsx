@@ -2,17 +2,13 @@ import React from "react";
 
 export default function ProductReviewCard({ review }) {
   return (
-    <article className="white-card">
-      <h2>review title</h2>
+    <article className="white-card review-card">
+      <h3>Rated {review.rating} of 5</h3>
       <p>
-        <date>2020-09-02</date>, by [author]
+        <time>{review.date}</time>, by {review.author.name}
       </p>
       <hr />
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita tenetur a, itaque ducimus est eius, ullam
-        voluptatibus fugiat consequuntur in odio delectus necessitatibus nihil quos eligendi laboriosam neque mollitia
-        totam.
-      </p>
+      <p>{review.description}</p>
     </article>
   );
 }
