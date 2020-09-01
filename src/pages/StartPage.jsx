@@ -1,9 +1,12 @@
 import React from "react";
+import ProductCard from "../components/ProductCard";
 
 export default function StartPage() {
   return (
     <div>
-      <h2>This is where the store will go</h2>
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
     </div>
   );
 }
