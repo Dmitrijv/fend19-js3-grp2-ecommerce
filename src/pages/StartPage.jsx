@@ -6,7 +6,6 @@ export default function StartPage() {
     <div>
       <ProductCard />
       <ProductCard />
-      <ProductCard />
     </div>
   );
 }
