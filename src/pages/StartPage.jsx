@@ -5,11 +5,11 @@ export default function StartPage(props) {
   const products = props.products;
 
   return (
-    <div>
+    <div className="productList">
       {products &&
-        Object.entries(products).map((item, index) => {
-          console.log("hello");
-          return <ProductCard key={`product-card-${index}`} productInfo={item} />;
+        Object.entries(products).map((product, index) => {
+          console.log(product);
+          return <ProductCard key={`product-card-${index}`} product={product[1]} />;
         })}
     </div>
   );

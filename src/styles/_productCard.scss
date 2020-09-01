@@ -1,10 +1,16 @@
 div.productCard {
   max-width: 760px;
-  padding: 20px 10px;
+  padding: 15px;
   margin: 40px;
 
   background-color: #fff;
   border-radius: 3px;
   text-align: left;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+
+  img.product-cover-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
 }
