@@ -10,7 +10,6 @@ export default function DetailPage(props) {
 
   // clear selected nav item
   [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
-    console.log("hello");
     item.classList.remove("active");
   });
 
