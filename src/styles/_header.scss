@@ -6,8 +6,34 @@ div.header {
   padding: 5px 0px 5px 0px;
   margin-bottom: 1px;
   z-index: 2;
-
-  box-sizing: border-box;
   padding: 2px 10px 0px 10px;
   color: white;
+}
+
+div.header nav {
+  padding: 10px;
+  z-index: 10;
+
+  ul {
+    list-style: none;
+  }
+
+  ul li {
+    display: inline;
+    margin-right: 6px;
+    font-size: 16px;
+  }
+
+  ul li:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  a {
+    color: white;
+  }
+
+  a:not(.active) {
+    text-decoration: none;
+  }
 }
