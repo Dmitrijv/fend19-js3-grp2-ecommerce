@@ -18,13 +18,13 @@ function App() {
     cartFromLocalStorage = JSON.parse(localStorage.getItem("myCart"));
     if (cartFromLocalStorage) {
       setCart(cartFromLocalStorage);
-      console.log("cart is set");
-      console.log(cart);
+      // console.log("cart is set");
+      // console.log(cart);
     } else {
-      console.log("No cart");
+      // console.log("No cart");
     }
   };
-  console.log(cart);
+  // console.log(cart);
 
   useEffect(() => {
     getCart();
