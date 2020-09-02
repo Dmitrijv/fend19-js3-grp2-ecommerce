@@ -1,6 +1,6 @@
 import "./App.scss";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { CartContext } from "./contexts/CartContext";
 
@@ -28,12 +28,12 @@ function App() {
 
   useEffect(() => {
     getCart();
-  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   function getProducts() {
     fetch("https://mock-data-api.firebaseio.com/e-commerce/products.json")
-      .then((resp) => resp.json())
-      .then((response) => {
+      .then(resp => resp.json())
+      .then(response => {
         setProducts(response);
       });
   }
@@ -48,7 +48,7 @@ function App() {
         <Switch>
           <Route
             path="/product/:productId"
-            render={(props) => {
+            render={props => {
               return <LayoutSimple mainContent={<DetailPage products={products} {...props} />} />;
             }}
           />
