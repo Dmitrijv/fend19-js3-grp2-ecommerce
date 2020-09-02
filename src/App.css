@@ -1,0 +1,183 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+body {
+  background-color: #efefef;
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: BhrHeaderFont, Trebuchet MS;
+}
+
+.centered-container {
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.white-card {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+div.header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  /* required */
+  background-color: #3b455e;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 15px;
+  z-index: 2;
+  padding: 2px 10px 0px 10px;
+  color: white;
+}
+
+div.header nav {
+  padding: 10px;
+  z-index: 10;
+}
+
+div.header nav ul {
+  list-style: none;
+}
+
+div.header nav ul li {
+  display: inline;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+div.header nav ul li:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+div.header nav a {
+  color: white;
+}
+
+div.header nav a:not(.active) {
+  text-decoration: none;
+}
+
+div.product-card {
+  padding: 15px;
+  margin-bottom: 20px;
+  /* this needs to be removed once start page uses Masonry */
+}
+
+div.product-card img.product-cover-image {
+  width: 100%;
+  max-height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.my-masonry-grid {
+  display: -webkit-box;
+  /* Not needed if autoprefixing */
+  display: -ms-flexbox;
+  /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px;
+  /* gutter size offset */
+}
+
+.my-masonry-grid_column {
+  padding-left: 30px;
+  /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 30px;
+}
+
+.product-details-card {
+  margin-bottom: 15px;
+}
+
+.review-card {
+  margin-bottom: 10px;
+}
+
+.added-btn {
+  -webkit-animation: pulseSuccess 1.5s;
+          animation: pulseSuccess 1.5s;
+}
+
+.failed-btn {
+  -webkit-animation: pulseFail 1.5s;
+          animation: pulseFail 1.5s;
+}
+
+@-webkit-keyframes pulseSuccess {
+  0% {
+    background-color: unset;
+  }
+  50% {
+    background-color: #26f31f;
+  }
+  100% {
+    background-color: unset;
+  }
+}
+
+@keyframes pulseSuccess {
+  0% {
+    background-color: unset;
+  }
+  50% {
+    background-color: #26f31f;
+  }
+  100% {
+    background-color: unset;
+  }
+}
+
+@-webkit-keyframes pulseFail {
+  0% {
+    background-color: unset;
+  }
+  50% {
+    background-color: #FF4136;
+  }
+  100% {
+    background-color: unset;
+  }
+}
+
+@keyframes pulseFail {
+  0% {
+    background-color: unset;
+  }
+  50% {
+    background-color: #FF4136;
+  }
+  100% {
+    background-color: unset;
+  }
+}
+/*# sourceMappingURL=App.css.map */
