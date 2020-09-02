@@ -48,7 +48,7 @@ function App() {
         <Route
           path="/product/:productId"
           render={(props) => {
-            return <LayoutSimple mainContent={<DetailPage {...props} />} />;
+            return <LayoutSimple mainContent={<DetailPage products={products} {...props} />} />;
           }}
         />
 
