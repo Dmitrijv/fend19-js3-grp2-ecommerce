@@ -11,7 +11,7 @@ export default function StartPage(props) {
   // handle absent product list
   if (!products || products.length === 0) {
     return (
-      <div className="centered-wrapper">
+      <div className="centered-container">
         <div className="white-card">
           <p>Could not load product list from the API.</p>
         </div>
