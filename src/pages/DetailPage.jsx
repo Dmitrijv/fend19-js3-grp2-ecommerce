@@ -12,8 +12,18 @@ export default function DetailPage(props) {
   const product = products[productId];
   //console.log(product);
 
+  const gallery = product.images ? product.images : [];
+  const productCoverSource = gallery[0]
+    ? gallery[0].src.small
+    : `https://via.placeholder.com/700x200`;
+  const productCoverAlt = gallery[0]
+    ? gallery[0].alt
+    : `Cover image for this product.`;
+
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (
+    item
+  ) {
     item.classList.remove("active");
   });
 
@@ -22,6 +32,7 @@ export default function DetailPage(props) {
   return (
     <div className="centered-container">
       <div className="white-card product-details-card">
+        <img src={productCoverSource} alt={productCoverAlt} />
         <h3>Rated {product.rating} of 5</h3>
         <h2>{product.name}</h2>
         <p>{product.description}</p>
