@@ -5,7 +5,7 @@ import CartProductCard from "./CartProductCard";
 
 export default function CartList() {
   const { products } = useContext(ProductsContext);
-  const { cart } = useContext(CartContext);
+  const { cart, totalPrice } = useContext(CartContext);
   return (
     <div>
       <ul>
@@ -15,6 +15,7 @@ export default function CartList() {
             return cart[productId] ? <CartProductCard key={`product-card-${index}`} product={product[1]} /> : null;
           })}
       </ul>
+      <p>Total price: {totalPrice}</p>
     </div>
   );
 }

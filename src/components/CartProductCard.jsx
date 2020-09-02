@@ -13,7 +13,6 @@ export default function CartProductCard({ product }) {
   const handleOnClickPlus = () => {
     let updatedCart = {};
     updatedCart = { ...cart };
-    console.log(updatedCart);
     updatedCart[productId].qty++;
     setQtyInCart(updatedCart[productId].qty);
     setCart(updatedCart);

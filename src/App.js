@@ -14,41 +14,56 @@ import CartPage from "./pages/CartPage";
 function App() {
   let [products, setProducts] = useState([]);
   let [cart, setCart] = useState({});
+  let [totalPrice, setTotalPrice] = useState(0);
   let cartFromLocalStorage;
 
   const getCart = () => {
     cartFromLocalStorage = JSON.parse(localStorage.getItem("myCart"));
     if (cartFromLocalStorage) {
       setCart(cartFromLocalStorage);
-      // console.log("cart is set");
-      // console.log(cart);
-    } else {
-      // console.log("No cart");
     }
   };
-  // console.log(cart);
 
   useEffect(() => {
     getProducts();
     getCart();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const calcTotalPrice = () => {
+    let total = 0;
+    if (cart && Object.keys(cart).length !== 0) {
+      products &&
+        Object.keys(products).forEach((product) => {
+          const price = products[product].price;
+          const productId = products[product].id;
+          if (cart[productId]) {
+            total = parseInt(totalPrice + cart[productId].qty * price);
+          }
+        });
+    }
+    setTotalPrice(total);
+  };
+
+  useEffect(() => {
+    calcTotalPrice();
+  }, [cart, products]);
+
   function getProducts() {
     fetch("https://mock-data-api.firebaseio.com/e-commerce/products.json")
-      .then(resp => resp.json())
-      .then(response => {
+      .then((resp) => resp.json())
+      .then((response) => {
         setProducts(response);
       });
   }
 
   return (
     <div className="App">
-      <CartContext.Provider value={{ cart, setCart }}>
+      <CartContext.Provider value={{ cart, setCart, totalPrice }}>
         <ProductsContext.Provider value={{ products, setProducts }}>
           <Switch>
             <Route
               path="/product/:productId"
-              render={props => {
+              render={(props) => {
                 return <LayoutSimple mainContent={<DetailPage {...props} />} />;
               }}
             />
