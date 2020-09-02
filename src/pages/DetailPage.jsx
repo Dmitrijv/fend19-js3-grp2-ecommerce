@@ -4,26 +4,20 @@ import { useContext } from "react";
 import AddToCartButton from "./../components/AddToCartButton";
 import ReviewList from "../components/ReviewList";
 
-import { ProductsContext } from "./../contexts/ProductsContext";
+import { EcommerceContext } from "./../contexts/EcommerceContext";
 
 export default function DetailPage(props) {
   const productId = props.match.params.productId;
-  const { products } = useContext(ProductsContext);
+  const { products } = useContext(EcommerceContext);
   const product = products[productId];
   //console.log(product);
 
   const gallery = product.images ? product.images : [];
-  const productCoverSource = gallery[0]
-    ? gallery[0].src.small
-    : `https://via.placeholder.com/700x200`;
-  const productCoverAlt = gallery[0]
-    ? gallery[0].alt
-    : `Cover image for this product.`;
+  const productCoverSource = gallery[0] ? gallery[0].src.small : `https://via.placeholder.com/700x200`;
+  const productCoverAlt = gallery[0] ? gallery[0].alt : `Cover image for this product.`;
 
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (
-    item
-  ) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (item) {
     item.classList.remove("active");
   });
 

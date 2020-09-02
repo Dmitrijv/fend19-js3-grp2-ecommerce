@@ -3,10 +3,10 @@ import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
 import Masonry from "react-masonry-css";
 
-import { ProductsContext } from "./../contexts/ProductsContext";
+import { EcommerceContext } from "./../contexts/EcommerceContext";
 
 export default function StartPage(props) {
-  const { products } = useContext(ProductsContext);
+  const { products } = useContext(EcommerceContext);
 
   // handle absent product list
   if (!products || products.length === 0) {
@@ -21,7 +21,7 @@ export default function StartPage(props) {
     default: 4,
     1100: 4,
     700: 3,
-    500: 1
+    500: 1,
   };
 
   return (

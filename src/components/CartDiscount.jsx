@@ -1,21 +1,22 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { useRef } from "react";
-import { CartContext } from "../contexts/CartContext";
+
+import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartDiscount() {
   const DISCOUNT_URL = "https://mock-data-api.firebaseio.com/e-commerce/couponCodes.json";
   const discountInput = useRef();
   const [discountData, setDiscountData] = useState({});
-  const { totalPrice } = useContext(CartContext);
+  const { totalPrice } = useContext(EcommerceContext);
   let [discount, setDiscount] = useState(0);
 
   const fetchDiscount = () => {
     const url = DISCOUNT_URL;
 
     fetch(url)
-      .then(res => res.json())
-      .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         setDiscountData(result);
       });
   };

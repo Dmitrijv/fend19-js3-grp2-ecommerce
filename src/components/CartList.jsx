@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-import { ProductsContext } from "../contexts/ProductsContext";
-import { CartContext } from "../contexts/CartContext";
 import CartProductCard from "./CartProductCard";
 
+import { EcommerceContext } from "../contexts/EcommerceContext";
+
 export default function CartList() {
-  const { products } = useContext(ProductsContext);
-  const { cart, totalPrice } = useContext(CartContext);
+  const { products, cart, totalPrice } = useContext(EcommerceContext);
   return (
     <div>
       <ul>

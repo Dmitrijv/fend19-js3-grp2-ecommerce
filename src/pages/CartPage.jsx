@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import CartList from "../components/CartList";
 import CartDiscount from "../components/CartDiscount";
 import CartConfirm from "../components/CartConfirm";
-import { CartContext } from "../contexts/CartContext";
+
+import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartPage() {
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(EcommerceContext);
   // const cartItems = []; // TODO: feetch this bad boy from local storage like the hackers we are
 
   // cover the case when the cart is empty

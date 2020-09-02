@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { CartContext } from "../contexts/CartContext";
+
+import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartProductCard({ product }) {
   const productId = product.id;
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
 
   const gallery = product.images ? product.images : [];

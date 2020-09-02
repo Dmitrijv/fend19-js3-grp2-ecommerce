@@ -3,8 +3,7 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { CartContext } from "./contexts/CartContext";
-import { ProductsContext } from "./contexts/ProductsContext";
+import { EcommerceContext } from "./contexts/EcommerceContext";
 
 import LayoutSimple from "./pages/LayoutSimple";
 import StartPage from "./pages/StartPage";
@@ -58,26 +57,24 @@ function App() {
 
   return (
     <div className="App">
-      <CartContext.Provider value={{ cart, setCart, totalPrice }}>
-        <ProductsContext.Provider value={{ products, setProducts }}>
-          <Switch>
-            <Route
-              path="/product/:productId"
-              render={(props) => {
-                return <LayoutSimple mainContent={<DetailPage {...props} />} />;
-              }}
-            />
+      <EcommerceContext.Provider value={{ cart, setCart, totalPrice, products, setProducts }}>
+        <Switch>
+          <Route
+            path="/product/:productId"
+            render={(props) => {
+              return <LayoutSimple mainContent={<DetailPage {...props} />} />;
+            }}
+          />
 
-            <Route path={["/cart"]}>
-              <LayoutSimple mainContent={<CartPage />} />
-            </Route>
+          <Route path={["/cart"]}>
+            <LayoutSimple mainContent={<CartPage />} />
+          </Route>
 
-            <Route path={["/shop", "/"]}>
-              <LayoutSimple mainContent={<StartPage />} />
-            </Route>
-          </Switch>
-        </ProductsContext.Provider>
-      </CartContext.Provider>
+          <Route path={["/shop", "/"]}>
+            <LayoutSimple mainContent={<StartPage />} />
+          </Route>
+        </Switch>
+      </EcommerceContext.Provider>
     </div>
   );
 }

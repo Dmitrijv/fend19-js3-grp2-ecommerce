@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../contexts/CartContext";
+import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function Header() {
   // className="active" yoink this out for now
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(EcommerceContext);
   const [cartQty, setCartQty] = useState("");
 
   function cartStatus() {
     let total = 0;
-    Object.keys(cart).forEach(product => {
+    Object.keys(cart).forEach((product) => {
       total += cart[product].qty;
     });
     if (total > 10) {
