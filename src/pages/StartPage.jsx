@@ -9,7 +9,7 @@ export default function StartPage(props) {
     default: 4,
     1100: 4,
     700: 3,
-    500: 1
+    500: 1,
   };
 
   return (

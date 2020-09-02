@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   function getProducts() {
     fetch("https://mock-data-api.firebaseio.com/e-commerce/products.json")

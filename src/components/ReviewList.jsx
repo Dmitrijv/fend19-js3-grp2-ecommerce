@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import ProductReviewCard from "../components/ProductReviewCard";
 
-export default function({ productId }) {
+export default function ({ productId }) {
   let [reviews, setReviews] = useState([]);
 
   function fetchReviews(productId) {
@@ -16,10 +16,10 @@ export default function({ productId }) {
 
   useEffect(() => {
     fetchReviews(productId);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // if there are no reviews show an appropriate message
-  if (!reviews || reviews.length == 0) {
+  if (!reviews || reviews.length === 0) {
     return (
       <div className="white-card">
         <p>There are no reviews for this product.</p>
