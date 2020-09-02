@@ -8,7 +8,6 @@ export default function ProductCard({ product }) {
   const productCoverAlt = gallery[0] ? gallery[0].alt : `Cover image for this product.`;
 
   if (!product) return <div></div>; // cheeky return for empty products
-
   return (
     <div className="white-card product-card">
       <Link to={`/product/${product.id}`}>
