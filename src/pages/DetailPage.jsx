@@ -9,7 +9,7 @@ export default function DetailPage(props) {
   console.log(product);
 
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (item) {
     item.classList.remove("active");
   });
 
