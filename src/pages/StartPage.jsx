@@ -1,15 +1,27 @@
 import React from "react";
+import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
 import Masonry from "react-masonry-css";
 
+import { ProductsContext } from "./../contexts/ProductsContext";
+
 export default function StartPage(props) {
-  const products = props.products;
+  const { products } = useContext(ProductsContext);
+
+  // handle absent product list
+  if (!products || products.length === 0) {
+    return (
+      <div className="white-card">
+        <p>Could not load product list from the API.</p>
+      </div>
+    );
+  }
 
   const breakpointColumnsObj = {
     default: 4,
     1100: 4,
     700: 3,
-    500: 1,
+    500: 1
   };
 
   return (
@@ -19,11 +31,10 @@ export default function StartPage(props) {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {products &&
-          Object.entries(products).map((product, index) => {
-            // console.log(product);
-            return <ProductCard key={`product-card-${index}`} product={product[1]} />;
-          })}
+        {Object.entries(products).map((product, index) => {
+          // console.log(product);
+          return <ProductCard key={`product-card-${index}`} product={product[1]} />;
+        })}
       </Masonry>
     </div>
   );

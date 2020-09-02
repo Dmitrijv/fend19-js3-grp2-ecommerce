@@ -1,15 +1,19 @@
 import React from "react";
+import { useContext } from "react";
 
 import AddToCartButton from "./../components/AddToCartButton";
 import ReviewList from "../components/ReviewList";
 
+import { ProductsContext } from "./../contexts/ProductsContext";
+
 export default function DetailPage(props) {
   const productId = props.match.params.productId;
-  const product = props.products[productId];
-  console.log(product);
+  const { products } = useContext(ProductsContext);
+  const product = products[productId];
+  //console.log(product);
 
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (item) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
     item.classList.remove("active");
   });
 
