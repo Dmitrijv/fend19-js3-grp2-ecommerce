@@ -10,7 +10,7 @@ export default function AddToCartButton({ productId }) {
       updatedCart = { ...cart };
       updatedCart[productId].qty++;
       setCart(updatedCart);
-      pushToLocalStorage(updatedCart);
+      localStorage.setItem("myCart", JSON.stringify(updatedCart));
     } else {
       let newProduct = {
         id: productId,
@@ -24,13 +24,8 @@ export default function AddToCartButton({ productId }) {
         },
       };
       setCart(updatedCart);
-      pushToLocalStorage(updatedCart);
+      localStorage.setItem("myCart", JSON.stringify(updatedCart));
     }
-  };
-
-  const pushToLocalStorage = (updatedCart) => {
-    localStorage.setItem("myCart", JSON.stringify(updatedCart));
-    console.log("pushed");
   };
 
   return <button onClick={() => addToCart()}>add to cart</button>;
