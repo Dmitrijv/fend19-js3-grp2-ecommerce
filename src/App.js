@@ -37,7 +37,7 @@ function App() {
           const price = products[product].price;
           const productId = products[product].id;
           if (cart[productId]) {
-            total = parseInt(totalPrice + cart[productId].qty * price);
+            total = parseInt(total + cart[productId].qty * price);
           }
         });
     }
