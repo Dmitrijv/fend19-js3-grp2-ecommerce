@@ -21,12 +21,8 @@ export default function CartPage() {
 
   return (
     <div className="cartPage">
-      <div>
-        <div>
-          <CartList />
-        </div>
-        <CartDiscount />
-      </div>
+      <CartList />
+      <CartDiscount />
       <CartConfirm />
     </div>
   );

@@ -9,7 +9,7 @@ export default function Header() {
 
   function cartStatus() {
     let total = 0;
-    Object.keys(cart).forEach((product) => {
+    Object.keys(cart).forEach(product => {
       total += cart[product].qty;
     });
     if (total > 10) {
@@ -23,7 +23,7 @@ export default function Header() {
 
   useEffect(() => {
     cartStatus();
-  }, [cart]);
+  }, [cart]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="header">
