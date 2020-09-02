@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useRef } from "react";
+import { CartContext } from "../contexts/CartContext";
 
 export default function CartDiscount() {
   const DISCOUNT_URL = "https://mock-data-api.firebaseio.com/e-commerce/couponCodes.json";
   const discountInput = useRef();
   const [discountSale, setDiscountSale] = useState({});
+  const { totalPrice } = useContext(CartContext);
+  let [discount, setDiscount] = useState(0);
 
   const fetchDiscount = () => {
     const url = DISCOUNT_URL;
@@ -24,33 +27,39 @@ export default function CartDiscount() {
   const checkInputVal = () => {
     let inputVal = discountInput.current.value;
     inputVal = inputVal.toUpperCase();
-    let discount;
 
     switch (inputVal) {
       case "BLACKFRIDAY":
-        discount = discountSale.BLACKFRIDAY.discount;
+        setDiscount(discountSale.BLACKFRIDAY.discount);
         break;
       case "BLACKFRIDAY2019":
-        discount = discountSale.BLACKFRIDAY2019.discount;
+        setDiscount(discountSale.BLACKFRIDAY2019.discount);
         break;
       case "SUMMER19":
-        discount = discountSale.SUMMER19.discount;
+        setDiscount((discount = discountSale.SUMMER19.discount));
         break;
 
       default:
-        discount = "No discount";
+        setDiscount(0);
         break;
     }
-    return discount;
+  };
+
+  const renderDiscountPrice = () => {
+    return totalPrice * discount !== 0 ? <p>Discounted price: {totalPrice * discount} sek</p> : "";
   };
 
   return (
     <div className="cart-discount-wrapper">
-      <div className="cart-discount__input">
-        <p>Discount</p>
-        <input ref={discountInput} onChange={checkInputVal} type="text" />
+      <div className="cart-discount">
+        <div className="cart-discount__input">
+          <p>Discount</p>
+          <input ref={discountInput} onChange={checkInputVal} type="text" />
+        </div>
+        <button>Add</button>
       </div>
-      <button>Add</button>
+
+      {renderDiscountPrice()}
     </div>
   );
 }
