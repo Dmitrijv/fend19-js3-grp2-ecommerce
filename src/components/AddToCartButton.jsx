@@ -9,7 +9,6 @@ export default function AddToCartButton({ productId }) {
     if (cart[productId]) {
       updatedCart = { ...cart };
       updatedCart[productId].qty++;
-      console.log("pluss");
       setCart(updatedCart);
       pushToLocalStorage(updatedCart);
     } else {
