@@ -27,6 +27,7 @@ function App() {
   // console.log(cart);
 
   useEffect(() => {
+    getProducts();
     getCart();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -37,10 +38,6 @@ function App() {
         setProducts(response);
       });
   }
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <div className="App">
