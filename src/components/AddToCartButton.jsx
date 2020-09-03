@@ -57,14 +57,12 @@ export default function AddToCartButton({ productId }) {
       } else {
         let newProduct = {
           id: productId,
-          name: products[productId].name,
           qty: 1,
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
-            name: newProduct.name,
             qty: newProduct.qty,
           },
         };

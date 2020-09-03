@@ -23,8 +23,10 @@ export default function ProductCard({ product }) {
       </Link>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
-      <p>{product.price} sek</p>
-      <AddToCartButton productId={product.id} />
+      <div>
+        <p>{product.price} sek</p>
+        <AddToCartButton productId={product.id} />
+      </div>
     </div>
   );
 }
