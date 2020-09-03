@@ -3,6 +3,10 @@ div.cart-page {
     padding: 20px 0px;
     text-align: center;
   }
+
+  .white-card:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
 
 div.cart-page ul.cart-list {
