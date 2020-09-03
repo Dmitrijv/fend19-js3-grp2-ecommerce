@@ -1,6 +1,6 @@
 import "./App.scss";
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import { EcommerceContext } from "./contexts/EcommerceContext";
@@ -9,6 +9,7 @@ import LayoutSimple from "./pages/LayoutSimple";
 import StartPage from "./pages/StartPage";
 import DetailPage from "./pages/DetailPage";
 import CartPage from "./pages/CartPage";
+import ConfirmPage from "./pages/ConfirmPage";
 
 function App() {
   let [products, setProducts] = useState([]);
@@ -70,6 +71,10 @@ function App() {
         }}
       >
         <Switch>
+          <Route path="/confirmpage">
+            <LayoutSimple mainContent={<ConfirmPage />} />
+          </Route>
+
           <Route
             path="/product/:productId"
             render={(props) => {

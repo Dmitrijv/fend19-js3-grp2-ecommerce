@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
@@ -39,10 +39,7 @@ export default function AddToCartButton({ productId }) {
     if (productInStock > 0) {
       if (cart[productId]) {
         const buyAmount = cart[productId].qty;
-        console.log(
-          "Hur många av denna produkt finns i varukorgen innan klick: " +
-            buyAmount
-        );
+        console.log("Hur många av denna produkt finns i varukorgen innan klick: " + buyAmount);
         if (buyAmount >= productInStock) {
           buySuccess = false;
           console.log("Nu vill du köpa fler än vad som finns i lagret!");
@@ -75,7 +72,7 @@ export default function AddToCartButton({ productId }) {
     // addBtnVisual(buySuccess);
   };
 
-  const pushToLocalStorage = (updatedCart) => {
+  const pushToLocalStorage = updatedCart => {
     localStorage.setItem("myCart", JSON.stringify(updatedCart));
     console.log("pushed");
   };
