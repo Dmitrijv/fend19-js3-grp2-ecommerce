@@ -21,11 +21,11 @@ export default function ConfirmProduct({ product }) {
         <div className="img-wrapper">
           <img src={productCoverSource} alt={productCoverAlt} />
         </div>
-        <p>{product.name}</p>
-        <p>Quantity: {qtyInCart}</p>
-        <p>Total: {calcTotal()} sek</p>
+        <p>
+          {product.name} ({qtyInCart})
+        </p>
+        <p>{calcTotal()} sek</p>
       </li>
-      <p className="confirmpage-totalprice">Total price: {totalPrice} sek</p>
     </div>
   );
 }

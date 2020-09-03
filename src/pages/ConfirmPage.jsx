@@ -11,11 +11,17 @@ export default function ConfirmPage() {
     setCart({}); // clear reacts cart variable
   };
 
+  function getOrderTotal() {
+    // 1. get sum of all product prices
+    // 2. apply all redeemed coupons
+    return "TODO";
+  }
+
   return (
     <div className="confirmpage-container">
       <h1>Thank you {fullName} for your order!</h1>
       <div className="confirmpage-list-wrapper">
-        <h2>Order details</h2>
+        <h2>Ordered products</h2>
         <ul>
           {products &&
             Object.entries(products).map((product, index) => {
@@ -23,7 +29,8 @@ export default function ConfirmPage() {
               return cart[productId] ? <ConfirmProduct key={`product-card-${index}`} product={product[1]} /> : null;
             })}
         </ul>
-        <p>[total price here]</p>
+        <h2>Redeemed coupons</h2>
+        <p className="confirmpage-totalprice">Total price: {getOrderTotal()} sek</p>
         <button onClick={clearCart}>Back to store</button>
       </div>
     </div>
