@@ -51,9 +51,14 @@ export default function CartDiscount() {
   return (
     <div className="cart-discount-wrapper">
       <div className="cart-discount">
-        <p className="checkout-section-name">Coupon</p>
+        <p className="checkout-section-name">
+          Redeem coupons:{" "}
+          <span className="hidden success" id="coupon-feedback-message">
+            code accepted!
+          </span>
+        </p>
         <div className="cart-discount__input form-container">
-          <input ref={discountInput} type="text" placeholder="Coupon code" class="coupon-input" />
+          <input ref={discountInput} type="text" placeholder="enter code" class="coupon-input" />
           <button onClick={checkDiscount}>Redeem</button>
         </div>
       </div>

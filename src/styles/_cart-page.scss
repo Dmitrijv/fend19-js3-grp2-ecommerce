@@ -35,3 +35,13 @@ div.cart-discount {
 input.coupon-input {
   width: 100%;
 }
+
+span#coupon-feedback-message {
+  font-weight: bold;
+  &.success {
+    color: green;
+  }
+  &.fail {
+    color: red;
+  }
+}
