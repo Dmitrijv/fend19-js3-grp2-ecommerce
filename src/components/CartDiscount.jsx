@@ -13,8 +13,8 @@ export default function CartDiscount() {
     const url = DISCOUNT_URL;
 
     fetch(url)
-      .then((res) => res.json())
-      .then((result) => {
+      .then(res => res.json())
+      .then(result => {
         setDiscountData(result);
       });
   };
