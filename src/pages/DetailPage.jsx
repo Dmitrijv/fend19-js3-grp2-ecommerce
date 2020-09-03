@@ -12,8 +12,12 @@ export default function DetailPage(props) {
   const product = products[productId];
 
   const [gallery, setGallery] = useState([]);
-  const [productCoverSource, setProductCoverSource] = useState("https://via.placeholder.com/700x200");
-  const [productCoverAlt, setProductCoverAlt] = useState("Cover image for this product.");
+  const [productCoverSource, setProductCoverSource] = useState(
+    "https://via.placeholder.com/700x200"
+  );
+  const [productCoverAlt, setProductCoverAlt] = useState(
+    "Cover image for this product."
+  );
 
   useEffect(() => {
     if (product) {
@@ -29,7 +33,9 @@ export default function DetailPage(props) {
   }, [gallery]);
 
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (item) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (
+    item
+  ) {
     item.classList.remove("active");
   });
 
@@ -39,12 +45,18 @@ export default function DetailPage(props) {
     <div className="centered-container">
       <div className="white-card product-details-card">
         <img src={productCoverSource} alt={productCoverAlt} />
-        <h3>Rated {product.rating} of 5</h3>
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <p>{product.stock} in stock</p>
-        <p>{product.price} sek</p>
-        <AddToCartButton productId={productId} />
+        <div className="product-details-card-right">
+          <h3>Rated {product.rating} of 5</h3>
+          <div className="name-des-stock">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <p>{product.stock} in stock</p>
+          </div>
+          <div className="price-addbtn">
+            <p>{product.price} sek</p>
+            <AddToCartButton productId={productId} />
+          </div>
+        </div>
       </div>
       <ReviewList productId={productId} />
     </div>
