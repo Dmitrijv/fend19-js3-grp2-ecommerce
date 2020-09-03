@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 
 import AddToCartButton from "./../components/AddToCartButton";
@@ -10,11 +10,23 @@ export default function DetailPage(props) {
   const productId = props.match.params.productId;
   const { products } = useContext(EcommerceContext);
   const product = products[productId];
-  //console.log(product);
 
-  const gallery = product.images ? product.images : [];
-  const productCoverSource = gallery[0] ? gallery[0].src.small : `https://via.placeholder.com/700x200`;
-  const productCoverAlt = gallery[0] ? gallery[0].alt : `Cover image for this product.`;
+  const [gallery, setGallery] = useState([]);
+  const [productCoverSource, setProductCoverSource] = useState("https://via.placeholder.com/700x200");
+  const [productCoverAlt, setProductCoverAlt] = useState("Cover image for this product.");
+
+  useEffect(() => {
+    if (product) {
+      setGallery(product.images);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (gallery.length !== 0) {
+      setProductCoverSource(gallery[0].src.small);
+      setProductCoverAlt(gallery[0].alt);
+    }
+  }, [gallery]);
 
   // clear selected nav item
   [].forEach.call(document.querySelectorAll(".header nav a.active"), function (item) {
