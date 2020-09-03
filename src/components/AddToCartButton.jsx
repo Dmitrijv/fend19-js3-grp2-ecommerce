@@ -4,35 +4,29 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function AddToCartButton({ productId }) {
   const { products, cart, setCart } = useContext(EcommerceContext);
-  
-  
+
   let clickTimeout;
-  const [addBtnClass, setAddBtnClass] = useState("")
-  
+  const [addBtnClass, setAddBtnClass] = useState("");
+
   function addBtnVisual(buySuccess) {
-    
-    
     if (buySuccess) {
-      setAddBtnClass("added-btn")
+      setAddBtnClass("added-btn");
     } else {
-      setAddBtnClass("failed-btn")
+      setAddBtnClass("failed-btn");
     }
-    
+
     clickTimeout = setTimeout(() => {
-      setAddBtnClass("")
+      setAddBtnClass("");
     }, 1200);
   }
-  
+
   useEffect(() => {
     return () => {
       clearTimeout(clickTimeout);
     };
   }, [clickTimeout]);
-  
-  
+
   const addToCart = () => {
-    
-    
     const productInStock = products[productId].stock; // Variable that shows how many of the clicked product in stock
     let updatedCart = {};
 
@@ -57,12 +51,14 @@ export default function AddToCartButton({ productId }) {
       } else {
         let newProduct = {
           id: productId,
+          name: products[productId].name,
           qty: 1,
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
+            name: newProduct.name,
             qty: newProduct.qty,
           },
         };
