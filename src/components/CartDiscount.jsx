@@ -15,8 +15,8 @@ export default function CartDiscount() {
     const url = DISCOUNT_URL;
 
     fetch(url)
-      .then(res => res.json())
-      .then(result => {
+      .then((res) => res.json())
+      .then((result) => {
         setDiscountData(result);
       });
   };
@@ -47,7 +47,7 @@ export default function CartDiscount() {
   };
 
   const renderDiscountPrice = () => {
-    let priceWithDiscount = (totalPrice * discount).toFixed(2);
+    let priceWithDiscount = parseFloat((totalPrice * discount).toFixed(2));
     setTotalPriceWithDiscount(priceWithDiscount);
 
     return totalPrice * discount !== 0 ? <p>Discounted price: {priceWithDiscount} sek</p> : "";

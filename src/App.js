@@ -56,8 +56,6 @@ function App() {
       });
   }
 
-  console.log("Total price with discount: " + totalPriceWithDiscount);
-
   return (
     <div className="App">
       <EcommerceContext.Provider
