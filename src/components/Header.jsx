@@ -3,22 +3,15 @@ import { Link } from "react-router-dom";
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function Header() {
-  // className="active" yoink this out for now
   const { cart } = useContext(EcommerceContext);
   const [cartQty, setCartQty] = useState("");
 
-  function cartStatus() {
-    let total = 0;
-    Object.keys(cart).forEach(product => {
-      total += cart[product].qty;
-    });
-    if (total > 10) {
-      setCartQty("(10+)");
-    } else if (total !== 0) {
-      setCartQty(`(${total})`);
-    } else {
-      setCartQty("");
-    }
+  function updateCartItemCount() {
+    let total = Object.values(cart).reduce(function(sum, item) {
+      return sum + Number(item.qty);
+    }, 0);
+    const cartQtyString = total > 99 ? "( 99+ )" : `( ${total} )`;
+    setCartQty(cartQtyString);
   }
 
   //Dmitrij kommer hata mig :D :D :D
@@ -29,13 +22,15 @@ export default function Header() {
   };
 
   useEffect(() => {
-    cartStatus();
+    updateCartItemCount();
   }, [cart]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="top-header">
       <div className="centered-container top-header__container">
-        <h1>JS3 - Grupp 2 - E-commerce</h1>
+        <Link className={isCurrentPage("/")} to={`/`}>
+          <h1>JS3 - Grupp 2 - E-commerce</h1>
+        </Link>
         <nav>
           <ul>
             <li>
