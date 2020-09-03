@@ -39,7 +39,10 @@ export default function AddToCartButton({ productId }) {
     if (productInStock > 0) {
       if (cart[productId]) {
         const buyAmount = cart[productId].qty;
-        console.log("Hur många av denna produkt finns i varukorgen innan klick: " + buyAmount);
+        console.log(
+          "Hur många av denna produkt finns i varukorgen innan klick: " +
+            buyAmount
+        );
         if (buyAmount >= productInStock) {
           buySuccess = false;
           console.log("Nu vill du köpa fler än vad som finns i lagret!");
@@ -52,12 +55,14 @@ export default function AddToCartButton({ productId }) {
       } else {
         let newProduct = {
           id: productId,
+          name: products[productId].name,
           qty: 1,
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
+            name: newProduct.name,
             qty: newProduct.qty,
           },
         };
@@ -67,7 +72,7 @@ export default function AddToCartButton({ productId }) {
     } else {
       buySuccess = false;
     }
-    addBtnVisual(buySuccess);
+    // addBtnVisual(buySuccess);
   };
 
   const pushToLocalStorage = (updatedCart) => {

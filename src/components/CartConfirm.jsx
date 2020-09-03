@@ -1,27 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useContext } from "react";
+
+import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartConfirm() {
-  const [orderData, setOrderData] = useState({});
+  const { cart, totalPriceWithDiscount, totalPrice } = useContext(
+    EcommerceContext
+  );
+
+  console.log(cart);
 
   const firstnameInput = useRef();
   const lastnameInput = useRef();
-  const URL = "google.com";
+  const URL =
+    "https://mock-data-api.firebaseio.com/e-commerce/orders/group-2.json";
 
   function handleOnClick() {
-    setOrderData({
-      "group-2": {
-        //firstname: firstnameInput.current.value,
-        //lastname: lastnameInput.current.value,
-        //hämta från useContext: carten
-        //ordered_products: [item],
-        // total: price,
-      },
-    });
-    // sendOrderToAPI();
+    sendOrderToAPI();
   }
 
   function sendOrderToAPI() {
-    //fetch
+    const orderData = {
+      firstname: firstnameInput.current.value,
+      lastname: lastnameInput.current.value,
+      orderedproducts: { ...cart },
+      totalPriceWithDiscount:
+        totalPriceWithDiscount !== 0 ? totalPriceWithDiscount : "No discount",
+      totalprice: totalPrice,
+    };
+
     fetch(URL, {
       method: "POST",
       body: JSON.stringify(orderData),
