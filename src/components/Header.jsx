@@ -9,7 +9,7 @@ export default function Header() {
 
   function cartStatus() {
     let total = 0;
-    Object.keys(cart).forEach((product) => {
+    Object.keys(cart).forEach(product => {
       total += cart[product].qty;
     });
     if (total > 10) {
@@ -22,9 +22,9 @@ export default function Header() {
   }
 
   //Dmitrij kommer hata mig :D :D :D
-  const isCurrentPage = (path) => {
+  const isCurrentPage = path => {
     const classToAdd = path === window.location.pathname ? "current-link" : "";
-    console.log(window.location.pathname);
+    // console.log(window.location.pathname);
     return classToAdd;
   };
 
