@@ -29,7 +29,6 @@ export default function AddToCartButton({ productId }) {
     };
   }, [clickTimeout]);
   
-  console.log(clickTimeout);
   
   const addToCart = () => {
     
