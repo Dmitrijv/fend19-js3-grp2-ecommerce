@@ -7,10 +7,10 @@ export default function Header() {
   const [cartQty, setCartQty] = useState("");
 
   function updateCartItemCount() {
-    let total = Object.values(cart).reduce(function(sum, item) {
+    let totalQty = Object.values(cart).reduce(function(sum, item) {
       return sum + Number(item.qty);
     }, 0);
-    const cartQtyString = total > 99 ? "( 99+ )" : `( ${total} )`;
+    const cartQtyString = totalQty > 99 ? "( 99+ )" : `( ${totalQty} )`;
     setCartQty(cartQtyString);
   }
 
