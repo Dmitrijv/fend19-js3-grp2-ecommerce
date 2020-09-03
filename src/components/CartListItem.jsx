@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
-export default function CartProductCard({ product }) {
+export default function CartListItem({ product }) {
   const productId = product.id;
   const { cart, setCart } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
@@ -49,11 +49,11 @@ export default function CartProductCard({ product }) {
 
   return (
     <li>
-      <img src={productCoverSource} alt={productCoverAlt} />
+      <img className="cart-item-img" src={productCoverSource} alt={productCoverAlt} />
       <p>Product: {product.name}</p>
       <p>Price: {product.price}</p>
       <button onClick={() => handleOnClickMinus()}>-</button>
-      <p>Quantity in cart: {qtyInCart}</p>
+      <p>{qtyInCart}</p>
       <button onClick={() => handleOnClickPlus()}>+</button>
       <p>Total: {calcTotal()}</p>
       <button onClick={() => handleOnClickDelete()}>Remove from cart</button>
