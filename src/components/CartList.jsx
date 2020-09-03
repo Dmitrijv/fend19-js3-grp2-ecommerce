@@ -10,13 +10,7 @@ export default function CartList() {
 
   // cart is empty
   if (!cart || Object.keys(cart).length === 0) {
-    return (
-      <div className="centered-container">
-        <div className="white-card">
-          <p>There are no items in your cart.</p>
-        </div>
-      </div>
-    );
+    return <p className="text-center">There are no items in your cart.</p>;
   }
 
   return (
