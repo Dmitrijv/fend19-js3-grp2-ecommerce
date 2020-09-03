@@ -1,5 +1,10 @@
 div.product-card {
   padding: 15px;
+
+  h2.product-title-header {
+    padding-bottom: 6px;
+  }
+
   img.product-cover-image {
     width: 100%;
     max-height: 300px;

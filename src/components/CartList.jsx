@@ -22,7 +22,7 @@ export default function CartList() {
           ) : null;
         })}
       </ul>
-      <p>Total: {totalPrice} sek</p>
+      <p className="text-right">Total: {totalPrice} sek</p>
     </div>
   );
 }

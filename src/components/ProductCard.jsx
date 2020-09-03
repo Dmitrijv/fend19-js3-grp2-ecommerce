@@ -18,7 +18,7 @@ export default function ProductCard({ product }) {
       <Link to={`/product/${product.id}`}>
         <img className="product-cover-image" alt="image" src={productCoverSource} alt={productCoverAlt} />
       </Link>
-      <h2>{product.name}</h2>
+      <h2 className="product-title-header">{product.name}</h2>
       <p>{product.description}</p>
       <div className="flex-spacebetween">
         <p className="product-price">{product.price} sek</p>
