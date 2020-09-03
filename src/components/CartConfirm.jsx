@@ -25,22 +25,25 @@ export default function CartConfirm() {
       lastname: lastname,
       orderedproducts: { ...cart },
       totalPriceWithDiscount: discountMessage,
-      totalprice: totalPrice,
+      totalprice: totalPrice
     };
 
     fetch(URL, {
       method: "POST",
-      body: JSON.stringify(orderData),
+      body: JSON.stringify(orderData)
     });
   }
 
   return (
     <div>
-      <input ref={firstnameInput} type="text" placeholder="First name:" />
-      <input ref={lastnameInput} type="text" placeholder="Last name:" />
-      <Link to="/confirmpage" onClick={handleOnClick}>
-        Confirm order
-      </Link>
+      <p className="checkout-section-name">Confirm order</p>
+      <div className="form-container">
+        <input ref={firstnameInput} type="text" placeholder="First name" />
+        <input ref={lastnameInput} type="text" placeholder="Last name" />
+        <Link to="/confirmpage" onClick={handleOnClick}>
+          Confirm order
+        </Link>
+      </div>
     </div>
   );
 }
