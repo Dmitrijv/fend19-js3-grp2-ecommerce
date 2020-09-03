@@ -1,36 +1,38 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function AddToCartButton({ productId }) {
   const { products, cart, setCart } = useContext(EcommerceContext);
-  const thisBtn = useRef();
-
+  
+  
+  let clickTimeout;
+  const [addBtnClass, setAddBtnClass] = useState("")
+  
   function addBtnVisual(buySuccess) {
-    thisBtn.current.disabled = true;
-
+    
+    
     if (buySuccess) {
-      console.log("YAY!" + buySuccess);
-      thisBtn.current.textContent = "Added!";
-      thisBtn.current.classList.add("added-btn");
-      setInterval(function () {
-        thisBtn.current.textContent = "add to cart";
-        thisBtn.current.classList.remove("added-btn");
-        thisBtn.current.disabled = false;
-      }, 1500);
+      setAddBtnClass("added-btn")
     } else {
-      console.log("NAY!" + buySuccess);
-      setInterval(function () {
-        thisBtn.current.textContent = "add to cart";
-        thisBtn.current.className = "";
-        thisBtn.current.disabled = false;
-      }, 1500);
-      thisBtn.current.textContent = "Failed to add to cart!";
-      thisBtn.current.className = "failed-btn";
+      setAddBtnClass("failed-btn")
     }
+    
+    clickTimeout = setTimeout(() => {
+      setAddBtnClass("")
+    }, 1200);
   }
-
+  
+  useEffect(() => {
+    return () => {
+      clearTimeout(clickTimeout);
+    };
+  }, [clickTimeout]);
+  
+  
   const addToCart = () => {
+    
+    
     const productInStock = products[productId].stock; // Variable that shows how many of the clicked product in stock
     let updatedCart = {};
 
@@ -39,13 +41,13 @@ export default function AddToCartButton({ productId }) {
     if (productInStock > 0) {
       if (cart[productId]) {
         const buyAmount = cart[productId].qty;
-        console.log(
-          "Hur många av denna produkt finns i varukorgen innan klick: " +
-            buyAmount
-        );
+        // console.log(
+        //   "Hur många av denna produkt finns i varukorgen innan klick: " +
+        //     buyAmount
+        // );
         if (buyAmount >= productInStock) {
           buySuccess = false;
-          console.log("Nu vill du köpa fler än vad som finns i lagret!");
+          // console.log("Nu vill du köpa fler än vad som finns i lagret!");
         } else {
           updatedCart = { ...cart };
           updatedCart[productId].qty++;
@@ -55,14 +57,12 @@ export default function AddToCartButton({ productId }) {
       } else {
         let newProduct = {
           id: productId,
-          name: products[productId].name,
           qty: 1,
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
-            name: newProduct.name,
             qty: newProduct.qty,
           },
         };
@@ -72,7 +72,7 @@ export default function AddToCartButton({ productId }) {
     } else {
       buySuccess = false;
     }
-    // addBtnVisual(buySuccess);
+    addBtnVisual(buySuccess);
   };
 
   const pushToLocalStorage = (updatedCart) => {
@@ -81,7 +81,7 @@ export default function AddToCartButton({ productId }) {
   };
 
   return (
-    <button ref={thisBtn} onClick={() => addToCart()}>
+    <button className={addBtnClass} onClick={addToCart}>
       add to cart
     </button>
   );
