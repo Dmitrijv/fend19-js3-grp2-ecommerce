@@ -14,6 +14,7 @@ function App() {
   let [products, setProducts] = useState([]);
   let [cart, setCart] = useState({});
   let [totalPrice, setTotalPrice] = useState(0);
+  let [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState(0)
   let cartFromLocalStorage;
 
   const getCart = () => {
@@ -55,9 +56,11 @@ function App() {
       });
   }
 
+  console.log('Total price with discount: ' + totalPriceWithDiscount);
+
   return (
     <div className="App">
-      <EcommerceContext.Provider value={{ cart, setCart, totalPrice, products, setProducts }}>
+      <EcommerceContext.Provider value={{ cart, setCart, totalPrice, products, setProducts, totalPriceWithDiscount, setTotalPriceWithDiscount }}>
         <Switch>
           <Route
             path="/product/:productId"
