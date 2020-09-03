@@ -7,7 +7,8 @@ export default function ConfirmPage() {
   const { products, cart, setCart, fullName } = useContext(EcommerceContext);
 
   const clearCart = () => {
-    // setCart({});
+    localStorage.setItem("myCart", JSON.stringify({})); // clear persisted cart in local storage
+    setCart({}); // clear reacts cart variable
   };
 
   return (
