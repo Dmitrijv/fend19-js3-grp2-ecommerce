@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef  } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
@@ -10,9 +10,7 @@ export default function CartDiscount() {
   let [discount, setDiscount] = useState(0);
 
   const fetchDiscount = () => {
-    const url = DISCOUNT_URL;
-
-    fetch(url)
+    fetch(DISCOUNT_URL)
       .then(res => res.json())
       .then(result => {
         setDiscountData(result);
