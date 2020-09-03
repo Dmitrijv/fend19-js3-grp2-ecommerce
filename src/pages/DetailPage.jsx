@@ -5,7 +5,6 @@ import AddToCartButton from "./../components/AddToCartButton";
 import ReviewList from "../components/ReviewList";
 
 import { EcommerceContext } from "./../contexts/EcommerceContext";
-import { useState, useEffect } from "react";
 
 export default function DetailPage(props) {
   const productId = props.match.params.productId;
