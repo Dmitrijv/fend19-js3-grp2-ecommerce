@@ -22,8 +22,7 @@ export default function CartDiscount() {
   }, []);
 
   const checkDiscount = () => {
-    let inputVal = discountInput.current.value;
-    inputVal = inputVal.toUpperCase();
+    let inputVal = discountInput.current.value.toUpperCase();
 
     switch (inputVal) {
       case "BLACKFRIDAY":
@@ -33,7 +32,7 @@ export default function CartDiscount() {
         setDiscount(discountData.BLACKFRIDAY2019.discount);
         break;
       case "SUMMER19":
-        setDiscount((discount = discountData.SUMMER19.discount));
+        setDiscount(discountData.SUMMER19.discount);
         break;
 
       default:
@@ -52,13 +51,12 @@ export default function CartDiscount() {
   return (
     <div className="cart-discount-wrapper">
       <div className="cart-discount">
-        <div className="cart-discount__input">
-          <p>Discount</p>
+        <p>Discount</p>
+        <div className="cart-discount__input form-container">
           <input ref={discountInput} type="text" />
+          <button onClick={checkDiscount}>Add</button>
         </div>
-        <button onClick={checkDiscount}>Add</button>
       </div>
-
       {renderDiscountPrice()}
     </div>
   );
