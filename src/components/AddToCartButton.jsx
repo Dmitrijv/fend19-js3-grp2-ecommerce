@@ -71,7 +71,7 @@ export default function AddToCartButton({ productId }) {
     addBtnVisual(buySuccess);
   };
 
-  const pushToLocalStorage = (updatedCart) => {
+  const pushToLocalStorage = updatedCart => {
     localStorage.setItem("myCart", JSON.stringify(updatedCart));
     console.log("pushed");
   };
