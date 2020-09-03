@@ -52,15 +52,15 @@ export default function AddToCartButton({ productId }) {
         let newProduct = {
           id: productId,
           name: products[productId].name,
-          qty: 1,
+          qty: 1
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
             name: newProduct.name,
-            qty: newProduct.qty,
-          },
+            qty: newProduct.qty
+          }
         };
         setCart(updatedCart);
         pushToLocalStorage(updatedCart);
@@ -73,7 +73,7 @@ export default function AddToCartButton({ productId }) {
 
   const pushToLocalStorage = updatedCart => {
     localStorage.setItem("myCart", JSON.stringify(updatedCart));
-    console.log("pushed");
+    // console.log("pushed");
   };
 
   return (
