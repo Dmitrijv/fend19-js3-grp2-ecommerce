@@ -67,7 +67,7 @@ export default function AddToCartButton({ productId }) {
     } else {
       buySuccess = false;
     }
-    addBtnVisual(buySuccess);
+    // addBtnVisual(buySuccess);
   };
 
   const pushToLocalStorage = (updatedCart) => {
