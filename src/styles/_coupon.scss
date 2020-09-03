@@ -1,0 +1,80 @@
+/* 
+    adopted from
+    https://codepen.io/overtrue/pen/ZjVaVP
+*/
+
+$background-color: #fff;
+$radius-size: 12px;
+
+.coupons {
+  background: $background-color;
+  padding: 15px 0 0 0;
+  width: 350px;
+
+  .coupon {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+
+    > div {
+      padding: 10px 20px;
+      border-radius: $radius-size;
+    }
+
+    .coupon-intro {
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: #eee;
+      flex: 3;
+
+      ul {
+        color: #aaa;
+        padding-left: 20px;
+      }
+
+      &:after {
+        content: " ";
+        border: 2px dashed $background-color;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: -2px;
+        z-index: 2;
+      }
+    }
+
+    .coupon-value {
+      display: flex;
+      flex: 1;
+      position: relative;
+      background: #4caf50;
+      color: #fff;
+      font-size: 28px;
+      align-items: center;
+      justify-content: center;
+
+      &:before {
+        content: " ";
+        width: $radius-size * 2;
+        height: $radius-size * 2;
+        position: absolute;
+        top: -$radius-size;
+        left: -$radius-size;
+        border-radius: 100%;
+        background: $background-color;
+      }
+      &:after {
+        content: " ";
+        width: $radius-size * 2;
+        height: $radius-size * 2;
+        position: absolute;
+        bottom: -$radius-size;
+        left: -$radius-size;
+        border-radius: 100%;
+        background: $background-color;
+      }
+    }
+  }
+}
