@@ -1,31 +1,29 @@
 .added-btn {
-    animation: pulseSuccess 1.5s;
+    animation: pulseSuccess 1.2s;
 }
 
 .failed-btn {
-    animation: pulseFail 1.5s;
+    animation: pulseFail 1.2s;
 }
   
-  @keyframes pulseSuccess {
-    0% {
-      background-color: unset;
-    }
-    50% {
-        background-color: #26f31f;
-    }
-    100% {
-        background-color: unset;
-    }
+@keyframes pulseSuccess {
+  70% {
+    background-color: #26f31f;
+    // font-weight: 900;
   }
-  @keyframes pulseFail {
-    0% {
-        background-color: unset;
+  100% {
+    background-color: unset;
+    // font-weight: unset;
+  }
+}
 
-    }
-    50% {
-        background-color: #FF4136;
-    }
-    100% {
-        background-color: unset;
-    }
+@keyframes pulseFail {
+  0% {
+    background-color: #FF4136;
+    // font-weight: 900;
   }
+  100% {
+    background-color: unset;
+    // font-weight: unset;
+  }
+}

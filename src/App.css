@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -6,7 +7,7 @@
 }
 
 html {
-  font-family: Source Sans Pro, Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
@@ -22,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: BhrHeaderFont, Trebuchet MS;
+  font-family: "Montserrat", sans-serif;
 }
 
 .centered-container {
@@ -39,51 +40,66 @@ h6 {
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
-div.header {
+.top-header {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   /* required */
-  background-color: #3b455e;
-  padding: 5px 0px 5px 0px;
+  background-color: #222c34;
   margin-bottom: 15px;
   z-index: 2;
-  padding: 2px 10px 0px 10px;
+  padding: 10px 0px;
   color: white;
 }
 
-div.header nav {
+.top-header__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.top-header__container h1 {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.top-header nav {
   padding: 10px;
   z-index: 10;
 }
 
-div.header nav ul {
+.top-header nav ul {
   list-style: none;
 }
 
-div.header nav ul li {
+.top-header nav ul li {
   display: inline;
   margin-right: 6px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-div.header nav ul li:hover {
+.top-header nav ul li:hover {
   text-decoration: underline;
   color: white;
 }
 
-div.header nav a {
+.top-header nav a {
   color: white;
 }
 
-div.header nav a:not(.active) {
+.top-header nav .current-link {
+  font-weight: bold;
+}
+
+.top-header nav a:not(.active) {
   text-decoration: none;
 }
 
 div.product-card {
   padding: 15px;
-  margin-bottom: 20px;
-  /* this needs to be removed once start page uses Masonry */
 }
 
 div.product-card img.product-cover-image {
@@ -117,6 +133,43 @@ div.product-card img.product-cover-image {
 
 .product-details-card {
   margin-bottom: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.product-details-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.product-details-card h3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 2rem 2rem 0 0;
+}
+
+.price-addbtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0 0 3rem 0;
+}
+
+.name-des-stock {
+  margin: 7rem;
 }
 
 .review-card {
@@ -124,20 +177,17 @@ div.product-card img.product-cover-image {
 }
 
 .added-btn {
-  -webkit-animation: pulseSuccess 1.5s;
-          animation: pulseSuccess 1.5s;
+  -webkit-animation: pulseSuccess 1.2s;
+          animation: pulseSuccess 1.2s;
 }
 
 .failed-btn {
-  -webkit-animation: pulseFail 1.5s;
-          animation: pulseFail 1.5s;
+  -webkit-animation: pulseFail 1.2s;
+          animation: pulseFail 1.2s;
 }
 
 @-webkit-keyframes pulseSuccess {
-  0% {
-    background-color: unset;
-  }
-  50% {
+  70% {
     background-color: #26f31f;
   }
   100% {
@@ -146,10 +196,7 @@ div.product-card img.product-cover-image {
 }
 
 @keyframes pulseSuccess {
-  0% {
-    background-color: unset;
-  }
-  50% {
+  70% {
     background-color: #26f31f;
   }
   100% {
@@ -159,9 +206,6 @@ div.product-card img.product-cover-image {
 
 @-webkit-keyframes pulseFail {
   0% {
-    background-color: unset;
-  }
-  50% {
     background-color: #FF4136;
   }
   100% {
@@ -171,9 +215,6 @@ div.product-card img.product-cover-image {
 
 @keyframes pulseFail {
   0% {
-    background-color: unset;
-  }
-  50% {
     background-color: #FF4136;
   }
   100% {
