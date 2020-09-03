@@ -48,15 +48,15 @@ export default function CartListItem({ product }) {
   };
 
   return (
-    <li>
+    <li className="cart-item">
       <img className="cart-item-img" src={productCoverSource} alt={productCoverAlt} />
-      <p>Product: {product.name}</p>
-      <p>Price: {product.price}</p>
+      <p>{product.name}</p>
+      <p>{product.price} sek</p>
       <button onClick={() => handleOnClickMinus()}>-</button>
       <p>{qtyInCart}</p>
       <button onClick={() => handleOnClickPlus()}>+</button>
-      <p>Total: {calcTotal()}</p>
-      <button onClick={() => handleOnClickDelete()}>Remove from cart</button>
+      <p>{calcTotal()} sek</p>
+      <button onClick={() => handleOnClickDelete()}>Remove</button>
     </li>
   );
 }

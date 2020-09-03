@@ -10,7 +10,8 @@ div.cart-page {
 }
 
 div.cart-page ul.cart-list {
-  li {
+  li.cart-item {
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
