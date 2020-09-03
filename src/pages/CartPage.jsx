@@ -20,7 +20,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="centered-container">
+    <div className="centered-container cart-page">
       <div className="white-card">
         <h2>Checkout</h2>
         <CartList />

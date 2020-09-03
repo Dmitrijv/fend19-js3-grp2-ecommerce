@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap");
 @import "./styles/basics";
-@import "./styles/header";
-@import "./styles/product-card";
-
+@import "./styles/buttons";
 @import "./styles/masonry";
+
+@import "./styles/header";
+
+@import "./styles/product-card";
 @import "./styles/product-details-card";
 @import "./styles/product-review-card";
 
-@import "./styles/buttons";
+@import "./styles/cart-page";
