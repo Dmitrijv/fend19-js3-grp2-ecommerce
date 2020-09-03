@@ -7,7 +7,6 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartPage() {
   const { cart } = useContext(EcommerceContext);
-  // const cartItems = []; // TODO: feetch this bad boy from local storage like the hackers we are
 
   // cover the case when the cart is empty
   if (!cart || Object.keys(cart).length === 0) {
@@ -21,10 +20,17 @@ export default function CartPage() {
   }
 
   return (
-    <div className="cartPage">
-      <CartList />
-      <CartDiscount />
-      <CartConfirm />
+    <div className="centered-container">
+      <div className="white-card">
+        <h2>Checkout</h2>
+        <CartList />
+      </div>
+      <div className="white-card">
+        <CartDiscount />
+      </div>
+      <div className="white-card">
+        <CartConfirm />
+      </div>
     </div>
   );
 }

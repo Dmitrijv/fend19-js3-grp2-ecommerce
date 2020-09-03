@@ -86,7 +86,7 @@ function App() {
             <LayoutSimple mainContent={<CartPage />} />
           </Route>
 
-          <Route path={["/shop", "/"]}>
+          <Route path={["/"]}>
             <LayoutSimple mainContent={<StartPage />} />
           </Route>
         </Switch>

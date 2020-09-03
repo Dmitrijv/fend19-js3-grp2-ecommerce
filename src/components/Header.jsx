@@ -21,21 +21,32 @@ export default function Header() {
     }
   }
 
+  //Dmitrij kommer hata mig :D :D :D
+  const isCurrentPage = (path) => {
+    const classToAdd = path === window.location.pathname ? "current-link" : "";
+    console.log(window.location.pathname);
+    return classToAdd;
+  };
+
   useEffect(() => {
     cartStatus();
   }, [cart]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="header">
-      <div className="centered-container">
+    <div className="top-header">
+      <div className="centered-container top-header__container">
         <h1>JS3 - Grupp 2 - E-commerce</h1>
         <nav>
           <ul>
             <li>
-              <Link to={`/shop`}>Shop</Link>
+              <Link className={isCurrentPage("/")} to={`/`}>
+                Shop
+              </Link>
             </li>
             <li>
-              <Link to={`/cart`}>Cart {cartQty}</Link>
+              <Link className={isCurrentPage("/cart")} to={`/cart`}>
+                Cart {cartQty}
+              </Link>
             </li>
           </ul>
         </nav>
