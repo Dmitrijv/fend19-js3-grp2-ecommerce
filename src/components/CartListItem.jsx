@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
@@ -49,7 +50,9 @@ export default function CartListItem({ product }) {
 
   return (
     <li className="cart-item">
-      <img className="cart-item-img" src={productCoverSource} alt={productCoverAlt} />
+      <Link to={`/product/${productId}`}>
+        <img className="cart-item-img" src={productCoverSource} alt={productCoverAlt} />
+      </Link>
       <p>{product.name}</p>
       <p>{product.price} sek</p>
       <button onClick={() => handleOnClickMinus()}>-</button>
