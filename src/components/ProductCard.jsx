@@ -10,10 +10,7 @@ export default function ProductCard({ product }) {
 
   // Visuals for the add-to-cart-button: Start
 
-
-  
   // Visuals for the add-to-cart-button: End
-
 
   if (!product) return <div></div>; // cheeky return for empty products
   return (
@@ -23,8 +20,8 @@ export default function ProductCard({ product }) {
       </Link>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
-      <div>
-        <p>{product.price} sek</p>
+      <div className="flex-spacebetween">
+        <p className="product-price">{product.price} sek</p>
         <AddToCartButton productId={product.id} />
       </div>
     </div>

@@ -5,4 +5,13 @@ div.product-card {
     max-height: 300px;
     object-fit: cover;
   }
+
+  div.flex-spacebetween {
+    padding: 15px 0 0 0;
+  }
+
+  p.product-price {
+    font-weight: bold;
+    font-size: larger;
+  }
 }

@@ -45,8 +45,16 @@ input {
   margin-left: auto;
 }
 
-.text-center {
-  text-align: center;
+.text {
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
 }
 
 .white-card {
@@ -63,4 +71,11 @@ input {
   * {
     margin-right: 10px;
   }
+}
+
+.flex-spacebetween {
+  padding: 15px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
