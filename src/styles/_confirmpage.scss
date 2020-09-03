@@ -1,6 +1,6 @@
 .confirmpage-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   .img-wrapper {
@@ -10,4 +10,40 @@
       object-fit: cover;
     }
   }
+}
+
+.confirmpage-list-wrapper {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px gray;
+  margin: 0 2em;
+  padding: 2em;
+  max-width: 900px;
+  width: 100%;
+}
+
+.confirmpage-container {
+  min-height: 100vh;
+  width: 100vw;
+  background: url(../pictures/background.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    padding: 2em;
+    text-align: center;
+  }
+
+  h2 {
+    padding: 1em 0;
+  }
+}
+
+.confirmpage-totalprice {
+  font-weight: bold;
+  padding-top: 1.5em;
+  text-align: right;
 }

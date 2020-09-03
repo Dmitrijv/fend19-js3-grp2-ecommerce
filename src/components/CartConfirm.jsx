@@ -1,9 +1,10 @@
 import React, { useRef, useContext } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
+import { Link } from "react-router-dom";
 
 export default function CartConfirm() {
-  const { cart, totalPriceWithDiscount, totalPrice } = useContext(EcommerceContext);
+  const { cart, totalPriceWithDiscount, totalPrice, setFullName } = useContext(EcommerceContext);
 
   const firstnameInput = useRef();
   const lastnameInput = useRef();
@@ -15,9 +16,13 @@ export default function CartConfirm() {
 
   function sendOrderToAPI() {
     const discountMessage = totalPriceWithDiscount !== 0 ? totalPriceWithDiscount : "No discount";
+    let firstname = firstnameInput.current.value;
+    let lastname = lastnameInput.current.value;
+    setFullName(firstname + " " + lastname);
+
     const orderData = {
-      firstname: firstnameInput.current.value,
-      lastname: lastnameInput.current.value,
+      firstname: firstname,
+      lastname: lastname,
       orderedproducts: { ...cart },
       totalPriceWithDiscount: discountMessage,
       totalprice: totalPrice,
@@ -33,7 +38,9 @@ export default function CartConfirm() {
     <div>
       <input ref={firstnameInput} type="text" placeholder="First name:" />
       <input ref={lastnameInput} type="text" placeholder="Last name:" />
-      <button onClick={handleOnClick}>Confirm order</button>
+      <Link to="/confirmpage" onClick={handleOnClick}>
+        Confirm order
+      </Link>
     </div>
   );
 }

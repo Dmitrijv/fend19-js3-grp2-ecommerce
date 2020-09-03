@@ -4,7 +4,7 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function ConfirmProduct({ product }) {
   const productId = product.id;
-  const { cart, setCart } = useContext(EcommerceContext);
+  const { cart, setCart, totalPrice } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
 
   const gallery = product.images ? product.images : [];
@@ -16,13 +16,16 @@ export default function ConfirmProduct({ product }) {
   };
 
   return (
-    <li className="confirmpage-list">
-      <div className="img-wrapper">
-        <img src={productCoverSource} alt={productCoverAlt} />
-      </div>
-      <p>{product.name}</p>
-      <p>Quantity: {qtyInCart}</p>
-      <p>Total: {calcTotal()}</p>
-    </li>
+    <div>
+      <li className="confirmpage-list">
+        <div className="img-wrapper">
+          <img src={productCoverSource} alt={productCoverAlt} />
+        </div>
+        <p>{product.name}</p>
+        <p>Quantity: {qtyInCart}</p>
+        <p>Total: {calcTotal()} sek</p>
+      </li>
+      <p className="confirmpage-totalprice">Total price: {totalPrice} sek</p>
+    </div>
   );
 }

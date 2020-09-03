@@ -17,11 +17,15 @@ function App() {
   let [totalPrice, setTotalPrice] = useState(0);
   let [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState(0);
   let cartFromLocalStorage;
+  let [fullName, setFullName] = useState('');
 
   const getCart = () => {
     cartFromLocalStorage = JSON.parse(localStorage.getItem("myCart"));
     if (cartFromLocalStorage) {
       setCart(cartFromLocalStorage);
+    }
+    else {
+      setCart({})
     }
   };
 
@@ -68,6 +72,9 @@ function App() {
           setProducts,
           totalPriceWithDiscount,
           setTotalPriceWithDiscount,
+          fullName,
+          setFullName,
+          getCart
         }}
       >
         <Switch>
