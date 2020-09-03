@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-import { useState } from "react";
-import { useRef } from "react";
+import React, { useContext, useState, useEffect, useRef  } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
@@ -21,7 +19,7 @@ export default function CartDiscount() {
       });
   };
 
-  useState(() => {
+  useEffect(() => {
     fetchDiscount();
   }, []);
 

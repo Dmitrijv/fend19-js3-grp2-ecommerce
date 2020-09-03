@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import AddToCartButton from "./AddToCartButton";
 
@@ -6,6 +7,13 @@ export default function ProductCard({ product }) {
   const gallery = product.images ? product.images : [];
   const productCoverSource = gallery[0] ? gallery[0].src.small : `https://via.placeholder.com/700x200`;
   const productCoverAlt = gallery[0] ? gallery[0].alt : `Cover image for this product.`;
+
+  // Visuals for the add-to-cart-button: Start
+
+
+  
+  // Visuals for the add-to-cart-button: End
+
 
   if (!product) return <div></div>; // cheeky return for empty products
   return (
