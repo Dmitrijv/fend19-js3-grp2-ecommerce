@@ -1,39 +1,50 @@
-div.header {
+.top-header {
   position: sticky;
   position: -webkit-sticky;
   top: 0; /* required */
-  background-color: #3b455e;
-  padding: 5px 0px 5px 0px;
+  background-color: #222c34;
   margin-bottom: 15px;
   z-index: 2;
-  padding: 2px 10px 0px 10px;
+  padding: 10px 0px;
   color: white;
-}
 
-div.header nav {
-  padding: 10px;
-  z-index: 10;
-
-  ul {
-    list-style: none;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      padding: 10px;
+      font-size: 14px;
+    }
   }
 
-  ul li {
-    display: inline;
-    margin-right: 6px;
-    font-size: 16px;
-  }
+  nav {
+    padding: 10px;
+    z-index: 10;
 
-  ul li:hover {
-    text-decoration: underline;
-    color: white;
-  }
+    ul {
+      list-style: none;
+    }
 
-  a {
-    color: white;
-  }
+    ul li {
+      display: inline;
+      margin-right: 6px;
+      font-size: 14px;
+    }
 
-  a:not(.active) {
-    text-decoration: none;
+    ul li:hover {
+      text-decoration: underline;
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+    .current-link {
+      font-weight: bold;
+    }
+
+    a:not(.active) {
+      text-decoration: none;
+    }
   }
 }
