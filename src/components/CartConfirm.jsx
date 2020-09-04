@@ -6,8 +6,8 @@ import { useHistory } from "react-router";
 export default function CartConfirm() {
   const { cart, totalPriceWithDiscount, totalPrice, setFullName } = useContext(EcommerceContext);
 
-  //   const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/group-2.json";
-  const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/test.json";
+  const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/group-2.json";
+  //   const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/test.json";
   const firstnameInput = useRef();
   const lastnameInput = useRef();
   const history = useHistory();
