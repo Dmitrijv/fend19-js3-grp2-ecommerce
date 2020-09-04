@@ -24,7 +24,7 @@ export default function CartDiscount() {
 
   function getDiscountMessage() {
     return discountData.discount && totalPrice !== 0
-      ? `Total with discount: ${Math.round(Number(totalPrice) * Number(discountData.discount))}  sek`
+      ? `Discounted total: ${Math.round(Number(totalPrice) * Number(discountData.discount))}  sek`
       : "No active coupon.";
   }
 
