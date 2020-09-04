@@ -7,8 +7,9 @@ export default function CartDiscount() {
   const DISCOUNT_URL = "https://mock-data-api.firebaseio.com/e-commerce/couponCodes.json";
   const discountInput = useRef();
   const [discountList, setDiscountList] = useState({});
-  const { totalPrice, setTotalPriceWithDiscount, discountData, setDiscountData } = useContext(EcommerceContext);
-  const [discountMessage, setDiscountMessage] = useState(null);
+  const { totalPrice, totalPriceWithDiscount, setTotalPriceWithDiscount, discountData, setDiscountData } = useContext(
+    EcommerceContext
+  );
 
   const fetchDiscount = () => {
     fetch(DISCOUNT_URL)
@@ -22,12 +23,6 @@ export default function CartDiscount() {
     fetchDiscount();
   }, []);
 
-  function getDiscountMessage() {
-    return discountData.discount && totalPrice !== 0
-      ? `Discounted total: ${Math.round(Number(totalPrice) * Number(discountData.discount))}  sek`
-      : "No active coupon.";
-  }
-
   const checkDiscount = event => {
     let inputVal = discountInput.current.value.toUpperCase();
 
@@ -39,11 +34,9 @@ export default function CartDiscount() {
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
       setTotalPriceWithDiscount(priceWithDiscount);
-      setDiscountMessage(`Discounted price: ${priceWithDiscount} sek`);
     } else if (!discountData.campaignName) {
       setDiscountData({});
       setTotalPriceWithDiscount(0);
-      setDiscountMessage("");
     }
     event.preventDefault();
   };
@@ -66,7 +59,9 @@ export default function CartDiscount() {
       </div>
 
       <div className="coupons">{discountData.campaignName && <CouponItem coupon={discountData} />}</div>
-      <p className="text-right">{getDiscountMessage()}</p>
+      <p className="text-right">
+        {totalPriceWithDiscount ? `Discounted total: ${totalPriceWithDiscount} sek` : "No active coupon."}
+      </p>
     </div>
   );
 }
