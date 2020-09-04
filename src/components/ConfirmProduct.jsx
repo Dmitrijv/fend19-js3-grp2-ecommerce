@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 
-export default function ConfirmProduct({ product }) {
+export default function ConfirmProduct({ product, cartToRender }) {
   const productId = product.id;
   const { cart, setCart } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
