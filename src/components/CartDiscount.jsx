@@ -34,6 +34,7 @@ export default function CartDiscount() {
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
       setTotalPriceWithDiscount(priceWithDiscount);
+      event.currentTarget.children[0].value = " ";
     } else if (!discountData.campaignName) {
       setDiscountData({});
       setTotalPriceWithDiscount(0);
