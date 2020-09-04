@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import CartList from "../components/CartList";
 import CartDiscount from "../components/CartDiscount";
 import CartConfirm from "../components/CartConfirm";
-
-import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartPage() {
   return (
