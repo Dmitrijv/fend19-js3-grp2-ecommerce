@@ -53,7 +53,7 @@ export default function CartDiscount() {
     <div className="cart-discount-wrapper">
       <div className="cart-discount">
         <p className="checkout-section-name">
-          Redeem coupons:{" "}
+          Redeem coupon:{" "}
           <span className="hidden success" id="coupon-feedback-message">
             code accepted!
           </span>
