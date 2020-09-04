@@ -4,7 +4,7 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function ConfirmProduct({ product }) {
   const productId = product.id;
-  const { cart, setCart, totalPrice } = useContext(EcommerceContext);
+  const { cart, setCart } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
 
   const gallery = product.images ? product.images : [];
