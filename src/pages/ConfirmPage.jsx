@@ -2,26 +2,48 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 import ConfirmProduct from "../components/ConfirmProduct";
+import CouponItem from "../components/CouponItem";
+import CartListItem from "../components/CartListItem";
 
 export default function ConfirmPage() {
-  const { products, cart, setCart, fullName } = useContext(EcommerceContext);
+  const {
+    products,
+    cart,
+    setCart,
+    fullName,
+    discountData,
+    setDiscountData,
+    totalPrice,
+    totalPriceWithDiscount,
+    setTotalPriceWithDiscount,
+  } = useContext(EcommerceContext);
 
   const [cartToRender, setCartToRender] = useState({});
-  console.log(cartToRender);
+  const [couponToRender, setCouponToRender] = useState({});
+  const [totalPriceToRender, setTotalPriceToRender] = useState(0);
+  const [discountedPriceToRender, setdiscountedPriceToRender] = useState(0);
 
   const clearCart = () => {
     localStorage.setItem("myCart", JSON.stringify({})); // clear persisted cart in local storage
     setCart({}); // clear reacts cart variable
+    setDiscountData({});
+    setTotalPriceWithDiscount(0);
   };
 
   function getOrderTotal() {
-    // 1. get sum of all product prices
-    // 2. apply all redeemed coupons
+    let total = 0;
+    let totalPrice = Object.values(cartToRender).reduce(function (sum, cartItem) {
+      const item = products[cartItem.id];
+      return sum + Number(item.qty) * Number(item.price);
+    }, 0);
     return "TODO";
   }
 
   useEffect(() => {
     setCartToRender(cart);
+    setCouponToRender(discountData);
+    setTotalPriceToRender(totalPrice);
+    setdiscountedPriceToRender(totalPriceWithDiscount);
     clearCart();
   }, []);
 
@@ -40,9 +62,11 @@ export default function ConfirmPage() {
               />
             ) : null;
           })}
+          <p className="confirmpage-totalprice">Total price: {totalPriceToRender} sek</p>
         </ul>
         <h2>Redeemed coupons</h2>
-        <p className="confirmpage-totalprice">Total price: {getOrderTotal()} sek</p>
+        <div className="coupons">{couponToRender.campaignName && <CouponItem coupon={couponToRender} />}</div>
+        <p className="confirmpage-totalprice">Discounted price: {discountedPriceToRender} sek</p>
       </div>
     </div>
   );

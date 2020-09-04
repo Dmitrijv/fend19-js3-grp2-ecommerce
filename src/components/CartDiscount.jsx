@@ -41,14 +41,6 @@ export default function CartDiscount() {
     }
   };
 
-  // const renderDiscountPrice = () => {
-  //   if (Object.keys(discountData).length !== 0) {
-  //     let priceWithDiscount = parseFloat((totalPrice * discountData.discount).toFixed(2));
-  //     setTotalPriceWithDiscount(priceWithDiscount);
-  //     setDiscountMessage("Discounted price: {priceWithDiscount} sek");
-  //   }
-  // };
-
   return (
     <div className="cart-discount-wrapper">
       <div className="cart-discount">

@@ -4,8 +4,7 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function ConfirmProduct({ product, cartToRender }) {
   const productId = product.id;
-  const { cart, setCart } = useContext(EcommerceContext);
-  const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
+  const [qtyInCart, setQtyInCart] = useState(cartToRender[productId].qty);
 
   const gallery = product.images ? product.images : [];
   const productCoverSource = gallery[0] ? gallery[0].src.small : `https://via.placeholder.com/700x200`;
