@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
 import ConfirmProduct from "../components/ConfirmProduct";
 import CouponItem from "../components/CouponItem";
 
 export default function ConfirmPage() {
+  const history = useHistory();
+
   const {
     products,
     cart,
@@ -14,7 +17,7 @@ export default function ConfirmPage() {
     setDiscountData,
     totalPrice,
     totalPriceWithDiscount,
-    setTotalPriceWithDiscount,
+    setTotalPriceWithDiscount
   } = useContext(EcommerceContext);
 
   const [cartToRender, setCartToRender] = useState({});
@@ -30,20 +33,26 @@ export default function ConfirmPage() {
   };
 
   useEffect(() => {
-    setCartToRender(cart);
-    setCouponToRender(discountData);
-    setTotalPriceToRender(totalPrice);
-    setdiscountedPriceToRender(totalPriceWithDiscount);
-    clearCart();
+    // ordering without customer data should not be possible
+    if (!fullName || fullName.length === 0) {
+      // console.log("attempted to order without filling in details");
+      history.push(`/cart`);
+    } else {
+      setCartToRender(cart);
+      setCouponToRender(discountData);
+      setTotalPriceToRender(totalPrice);
+      setdiscountedPriceToRender(totalPriceWithDiscount);
+      clearCart();
+    }
   }, []);
 
   return (
     <div className="confirmpage-container">
-      <h1>Thank you {fullName} for your order!</h1>
+      <h1>Thank you for your order, {fullName}!</h1>
       <div className="confirmpage-list-wrapper">
         <h2>Ordered products</h2>
         <ul>
-          {Object.keys(cartToRender).map((productId) => {
+          {Object.keys(cartToRender).map(productId => {
             return products[productId] ? (
               <ConfirmProduct
                 key={`product-card-${productId}`}
@@ -56,7 +65,9 @@ export default function ConfirmPage() {
         </ul>
         <h2>Redeemed coupons</h2>
         <div className="coupons">{couponToRender.campaignName && <CouponItem coupon={couponToRender} />}</div>
-        <p className="confirmpage-totalprice">Discounted price: {discountedPriceToRender} sek</p>
+        <p className="confirmpage-totalprice">
+          {discountedPriceToRender !== 0 ? `Discounted price: ${discountedPriceToRender} sek` : `No discount applied.`}
+        </p>
       </div>
     </div>
   );
