@@ -1,17 +1,19 @@
 import React, { useRef, useContext } from "react";
 
 import { EcommerceContext } from "../contexts/EcommerceContext";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 export default function CartConfirm() {
   const { cart, totalPriceWithDiscount, totalPrice, setFullName } = useContext(EcommerceContext);
 
+  const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/group-2.json";
   const firstnameInput = useRef();
   const lastnameInput = useRef();
-  const URL = "https://mock-data-api.firebaseio.com/e-commerce/orders/group-2.json";
+  const history = useHistory();
 
-  function handleOnClick() {
+  function handleOnClick(event) {
     sendOrderToAPI();
+    event.preventDefault();
   }
 
   function sendOrderToAPI() {
@@ -31,18 +33,23 @@ export default function CartConfirm() {
     fetch(URL, {
       method: "POST",
       body: JSON.stringify(orderData)
-    });
+    })
+      .then(res => res.json())
+      .then(reply => {
+        // console.log("sent order data to the endpoint like a boss");
+        history.push(`/confirmpage`);
+      });
   }
 
   return (
     <div>
       <p className="checkout-section-name">Confirm order</p>
       <div className="form-container">
-        <input ref={firstnameInput} type="text" placeholder="First name" />
-        <input ref={lastnameInput} type="text" placeholder="Last name" />
-        <Link to="/confirmpage" onClick={handleOnClick}>
-          Confirm order
-        </Link>
+        <form onSubmit={handleOnClick}>
+          <input ref={firstnameInput} type="text" placeholder="First name" required />
+          <input ref={lastnameInput} type="text" placeholder="Last name" required />
+          <button type="submit">Submit</button>
+        </form>
       </div>
     </div>
   );
