@@ -12,8 +12,8 @@ export default function CartDiscount() {
 
   const fetchDiscount = () => {
     fetch(DISCOUNT_URL)
-      .then((res) => res.json())
-      .then((result) => {
+      .then(res => res.json())
+      .then(result => {
         setDiscountList(result);
       });
   };
@@ -22,13 +22,19 @@ export default function CartDiscount() {
     fetchDiscount();
   }, []);
 
-  const checkDiscount = () => {
+  function getDiscountMessage() {
+    return discountData.discount && totalPrice !== 0
+      ? `Total with discount: ${Math.round(Number(totalPrice) * Number(discountData.discount))}  sek`
+      : "No coupon redeemed.";
+  }
+
+  const checkDiscount = event => {
     let inputVal = discountInput.current.value.toUpperCase();
 
     if (discountList[inputVal] && discountList[inputVal].valid) {
       const discountObj = {
         campaignName: inputVal,
-        discount: discountList[inputVal].discount,
+        discount: discountList[inputVal].discount
       };
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
@@ -39,6 +45,7 @@ export default function CartDiscount() {
       setTotalPriceWithDiscount(0);
       setDiscountMessage("");
     }
+    event.preventDefault();
   };
 
   return (
@@ -50,14 +57,16 @@ export default function CartDiscount() {
             code accepted!
           </span>
         </p>
-        <div className="cart-discount__input form-container">
-          <input ref={discountInput} type="text" placeholder="enter code" className="coupon-input" />
-          <button onClick={checkDiscount}>Redeem</button>
+        <div className="cart-discount__input">
+          <form onSubmit={checkDiscount} className="form-container">
+            <input ref={discountInput} type="text" placeholder="enter code" className="coupon-input" required />
+            <button type="submit">Redeem</button>
+          </form>
         </div>
       </div>
 
       <div className="coupons">{discountData.campaignName && <CouponItem coupon={discountData} />}</div>
-      {Object.keys(discountData).length !== 0 ? <p>{discountMessage}</p> : null}
+      <p className="text-right">{getDiscountMessage()}</p>
     </div>
   );
 }
