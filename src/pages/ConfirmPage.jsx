@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { EcommerceContext } from "../contexts/EcommerceContext";
 import ConfirmProduct from "../components/ConfirmProduct";
 import CouponItem from "../components/CouponItem";
-import CartListItem from "../components/CartListItem";
 
 export default function ConfirmPage() {
   const {
@@ -29,15 +28,6 @@ export default function ConfirmPage() {
     setDiscountData({});
     setTotalPriceWithDiscount(0);
   };
-
-  function getOrderTotal() {
-    let total = 0;
-    let totalPrice = Object.values(cartToRender).reduce(function (sum, cartItem) {
-      const item = products[cartItem.id];
-      return sum + Number(item.qty) * Number(item.price);
-    }, 0);
-    return "TODO";
-  }
 
   useEffect(() => {
     setCartToRender(cart);
