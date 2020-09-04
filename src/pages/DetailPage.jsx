@@ -42,8 +42,9 @@ export default function DetailPage(props) {
   if (!product) return <div></div>; // cheeky return
 
   return (
-    <div className="centered-container">
-      <div className="white-card product-details-card">
+    <div className="centered-container extra-margin-bottom">
+      <h1 className="detail-page-heading">Wow, nice product!</h1>
+      <div className="white-card product-details-card extra-margin-top">
         <img src={productCoverSource} alt={productCoverAlt} />
         <div className="product-details-card-right">
           <h3>Rated {product.rating} of 5</h3>
