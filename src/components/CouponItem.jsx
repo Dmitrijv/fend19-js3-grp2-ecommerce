@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CouponItem({ coupon }) {
-  const discountString = Math.floor((1 - coupon.discount) * 100);
+  const discountString = Math.round((1 - coupon.discount) * 100);
   return (
     <div className="coupon">
       <div className="coupon-intro">
