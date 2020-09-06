@@ -26,6 +26,7 @@ export default function CartDiscount() {
   const checkDiscount = event => {
     let inputVal = discountInput.current.value.toUpperCase();
 
+    // coupon is legitimate
     if (discountList[inputVal] && discountList[inputVal].valid) {
       const discountObj = {
         campaignName: inputVal,
@@ -34,10 +35,16 @@ export default function CartDiscount() {
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
       setTotalPriceWithDiscount(priceWithDiscount);
-      event.currentTarget.children[0].value = " ";
-    } else if (!discountData.campaignName) {
-      setDiscountData({});
-      setTotalPriceWithDiscount(0);
+      event.currentTarget.children[0].value = " "; // clear input field
+      document.querySelector("#coupon-feedback-message").textContent = ""; // clear error message
+      // coupon code is not valid
+    } else {
+      // only clear coupon data if there is no previous valid coupon already redeemed
+      if (!discountData.campaignName) {
+        setDiscountData({});
+        setTotalPriceWithDiscount(0);
+      }
+      document.querySelector("#coupon-feedback-message").textContent = "Invalid code.";
     }
     event.preventDefault();
   };
@@ -45,17 +52,15 @@ export default function CartDiscount() {
   return (
     <div className="cart-discount-wrapper">
       <div className="cart-discount">
-        <p className="checkout-section-name">
-          Redeem coupon:{" "}
-          <span className="hidden success" id="coupon-feedback-message">
-            code accepted!
-          </span>
-        </p>
+        <p className="checkout-section-name">Redeem coupon:</p>
         <div className="cart-discount__input">
           <form onSubmit={checkDiscount} className="form-container">
             <input ref={discountInput} type="text" placeholder="enter code" className="coupon-input" required />
             <button type="submit">Redeem</button>
           </form>
+          <div>
+            <span className="fail" id="coupon-feedback-message"></span>
+          </div>
         </div>
       </div>
 
