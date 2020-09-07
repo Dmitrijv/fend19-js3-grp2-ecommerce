@@ -32,6 +32,16 @@ export default function ConfirmPage() {
     setTotalPriceWithDiscount(0);
   };
 
+  function getDiscountedPriceForCart(cart) {
+    let totalPrice = Object.values(cart).reduce(function(sum, item) {
+      const price = products[item.id].price;
+      return sum + Number(item.qty) * Number(price);
+    }, 0);
+    const discountMultiplier = discountData.discount || 1;
+    const priceWithDiscount = Math.round(totalPrice * discountMultiplier);
+    return priceWithDiscount;
+  }
+
   useEffect(() => {
     // ordering without customer data should not be possible
     if (!fullName || fullName.length === 0) {
@@ -41,7 +51,7 @@ export default function ConfirmPage() {
       setCartToRender(cart);
       setCouponToRender(discountData);
       setTotalPriceToRender(totalPrice);
-      setdiscountedPriceToRender(totalPriceWithDiscount);
+      setdiscountedPriceToRender(getDiscountedPriceForCart(cart));
       clearCart();
     }
   }, []);
@@ -66,7 +76,7 @@ export default function ConfirmPage() {
         <h2>Redeemed coupons</h2>
         <div className="coupons">{couponToRender.campaignName && <CouponItem coupon={couponToRender} />}</div>
         <p className="confirmpage-totalprice">
-          {discountedPriceToRender !== 0 ? `Discounted price: ${discountedPriceToRender} sek` : `No discount applied.`}
+          {couponToRender.campaignName ? `Discounted price: ${discountedPriceToRender} sek` : `No discount applied.`}
         </p>
       </div>
     </div>

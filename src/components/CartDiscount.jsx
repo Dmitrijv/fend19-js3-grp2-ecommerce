@@ -20,9 +20,11 @@ export default function CartDiscount() {
   function getDiscountedPriceForCart(cart) {
     let totalPrice = Object.values(cart).reduce(function(sum, item) {
       const price = products[item.id].price;
-      return sum + (Number(item.qty) + Number(price));
+      return sum + Number(item.qty) * Number(price);
     }, 0);
-    return parseFloat((totalPrice * discountData.discount).toFixed(2));
+    const discountMultiplier = discountData.discount || 1;
+    const priceWithDiscount = Math.round(totalPrice * discountMultiplier);
+    return priceWithDiscount;
   }
 
   const fetchDiscount = () => {
@@ -52,7 +54,7 @@ export default function CartDiscount() {
         discount: discountList[inputVal].discount
       };
       setDiscountData(discountObj);
-      let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
+      let priceWithDiscount = getDiscountedPriceForCart(cart);
       setTotalPriceWithDiscount(priceWithDiscount);
       event.currentTarget.children[0].value = " "; // clear input field
       document.querySelector("#coupon-feedback-message").textContent = ""; // clear error message
