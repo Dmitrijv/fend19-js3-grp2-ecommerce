@@ -5,7 +5,7 @@ import { EcommerceContext } from "../contexts/EcommerceContext";
 
 export default function CartListItem({ product }) {
   const productId = product.id;
-  const { cart, setCart } = useContext(EcommerceContext);
+  const { cart, setCart, products } = useContext(EcommerceContext);
   const [qtyInCart, setQtyInCart] = useState(cart[productId].qty);
 
   const gallery = product.images ? product.images : [];
@@ -15,6 +15,9 @@ export default function CartListItem({ product }) {
   const handleOnClickPlus = () => {
     let updatedCart = {};
     updatedCart = { ...cart };
+
+    if (updatedCart[productId].qty >= products[productId].stock) return;
+
     updatedCart[productId].qty++;
     setQtyInCart(updatedCart[productId].qty);
     setCart(updatedCart);
