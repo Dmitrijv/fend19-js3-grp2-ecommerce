@@ -12,12 +12,8 @@ export default function DetailPage(props) {
   const product = products[productId];
 
   const [gallery, setGallery] = useState([]);
-  const [productCoverSource, setProductCoverSource] = useState(
-    "https://via.placeholder.com/700x200"
-  );
-  const [productCoverAlt, setProductCoverAlt] = useState(
-    "Cover image for this product."
-  );
+  const [productCoverSource, setProductCoverSource] = useState("https://via.placeholder.com/700x200");
+  const [productCoverAlt, setProductCoverAlt] = useState("Cover image for this product.");
 
   useEffect(() => {
     if (product) {
@@ -33,9 +29,7 @@ export default function DetailPage(props) {
   }, [gallery]);
 
   // clear selected nav item
-  [].forEach.call(document.querySelectorAll(".header nav a.active"), function (
-    item
-  ) {
+  [].forEach.call(document.querySelectorAll(".header nav a.active"), function(item) {
     item.classList.remove("active");
   });
 
@@ -44,7 +38,7 @@ export default function DetailPage(props) {
   return (
     <div className="centered-container extra-margin-bottom">
       <h1 className="detail-page-heading">Wow, nice product!</h1>
-      <div className="white-card product-details-card extra-margin-top">
+      <div className="white-card product-details-card">
         <img src={productCoverSource} alt={productCoverAlt} />
         <div className="product-details-card-right">
           <h3>Rated {product.rating} of 5</h3>
