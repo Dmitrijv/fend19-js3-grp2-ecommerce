@@ -7,7 +7,7 @@ export default function Header() {
   const [cartQty, setCartQty] = useState("");
 
   function updateCartItemCount() {
-    let totalQty = Object.values(cart).reduce(function(sum, item) {
+    let totalQty = Object.values(cart).reduce(function (sum, item) {
       return sum + Number(item.qty);
     }, 0);
     const cartQtyString = totalQty > 99 ? "( 99+ )" : `( ${totalQty} )`;
@@ -29,7 +29,7 @@ export default function Header() {
     <div className="top-header">
       <div className="centered-container top-header__container">
         <Link className={isCurrentPage("/")} to={`/`}>
-          <h1>JS3 - Grupp 2 - E-commerce</h1>
+          <h1 className="logo">StuffCo.</h1>
         </Link>
         <nav>
           <ul>

@@ -35,11 +35,18 @@
 button {
   padding: 7px;
   border: 1px solid #b3b2b2;
+  box-shadow: 1px 1px 1px gray;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 .added-btn {
   &:hover {
     background-color: #88e085;
+    transform: scale(1.1);
+    transition: all ease 250ms;
   }
   &:active {
     background-color: #26f31f;
@@ -49,8 +56,40 @@ button {
 .failed-btn {
   &:hover {
     background-color: #e7938f;
-}
+  }
   &:active {
     background-color: #ff4136;
+  }
+}
+
+.btn-minus,
+.btn-plus {
+  width: 20px;
+}
+
+.btn-minus {
+  &:hover {
+    background: rgb(194, 82, 82);
+  }
+}
+
+.btn-plus {
+  &:hover {
+    background: rgb(146, 202, 124);
+  }
+}
+
+.btn-remove {
+  &:hover {
+    background: rgb(194, 82, 82);
+    color: white;
+  }
+}
+
+.btn-redeem,
+.btn-submit {
+  &:hover {
+    background: rgb(146, 202, 124);
+    color: white;
   }
 }

@@ -28,6 +28,7 @@ export default function StartPage(props) {
 
   return (
     <div className="centered-container">
+      <h1 className="startpage-headline">Welcome to StuffCo.</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

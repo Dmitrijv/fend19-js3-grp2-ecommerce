@@ -28,12 +28,12 @@ export default function CartConfirm() {
       lastname: lastname,
       orderedproducts: { ...cart },
       totalPriceWithDiscount: discountMessage,
-      totalprice: totalPrice
+      totalprice: totalPrice,
     };
 
     fetch(URL, {
       method: "POST",
-      body: JSON.stringify(orderData)
+      body: JSON.stringify(orderData),
     })
       .then(res => res.json())
       .then(reply => {
@@ -49,7 +49,9 @@ export default function CartConfirm() {
         <form onSubmit={handleOnClick}>
           <input ref={firstnameInput} type="text" placeholder="First name" required />
           <input ref={lastnameInput} type="text" placeholder="Last name" required />
-          <button type="submit">Submit</button>
+          <button className="btn-submit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </div>

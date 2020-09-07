@@ -58,11 +58,17 @@ export default function CartListItem({ product }) {
       </Link>
       <p>{product.name}</p>
       <p>{product.price} sek</p>
-      <button onClick={() => handleOnClickMinus()}>-</button>
+      <button className="btn-minus" onClick={() => handleOnClickMinus()}>
+        -
+      </button>
       <p>{qtyInCart}</p>
-      <button onClick={() => handleOnClickPlus()}>+</button>
+      <button className="btn-plus" onClick={() => handleOnClickPlus()}>
+        +
+      </button>
       <p>{calcTotal()} sek</p>
-      <button onClick={() => handleOnClickDelete()}>Remove</button>
+      <button className="btn-remove" onClick={() => handleOnClickDelete()}>
+        Remove
+      </button>
     </li>
   );
 }

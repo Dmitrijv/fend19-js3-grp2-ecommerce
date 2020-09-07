@@ -30,7 +30,7 @@ export default function CartDiscount() {
     if (discountList[inputVal] && discountList[inputVal].valid) {
       const discountObj = {
         campaignName: inputVal,
-        discount: discountList[inputVal].discount
+        discount: discountList[inputVal].discount,
       };
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
@@ -56,7 +56,9 @@ export default function CartDiscount() {
         <div className="cart-discount__input">
           <form onSubmit={checkDiscount} className="form-container">
             <input ref={discountInput} type="text" placeholder="enter code" className="coupon-input" required />
-            <button type="submit">Redeem</button>
+            <button className="btn-redeem" type="submit">
+              Redeem
+            </button>
           </form>
           <div>
             <span className="fail" id="coupon-feedback-message"></span>

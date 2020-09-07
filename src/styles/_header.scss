@@ -11,9 +11,10 @@
   &__container {
     display: flex;
     justify-content: space-between;
-    h1 {
+    .logo {
       padding: 10px;
       font-size: 14px;
+      color: white;
     }
 
     a:visited,
