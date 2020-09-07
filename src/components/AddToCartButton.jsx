@@ -7,32 +7,16 @@ export default function AddToCartButton({ productId }) {
 
   let clickTimeout;
   const [addBtnClass, setAddBtnClass] = useState("added-btn");
-  const [hoverTitle, setHoverTitle] = useState("Add to cart.")
-  const [btnContent, setBtnContent] = useState("🛒")
+  const [hoverTitle, setHoverTitle] = useState("Add to cart.");
+  const [btnContent, setBtnContent] = useState("🛒 Add to cart");
 
   function addBtnVisual(buySuccess) {
     if (!buySuccess) {
       setAddBtnClass("failed-btn");
-      setHoverTitle("Out of stock.")
-      setBtnContent("🚫")
+      setHoverTitle("Out of stock.");
+      setBtnContent("🚫 Out of stock");
     }
   }
-
-  // let clickTimeout;
-  // const [addBtnClass, setAddBtnClass] = useState("");
-  // const [hoverTitle, setHoverTitle] = useState("")
-
-  // function addBtnVisual(buySuccess) {
-  //   if (buySuccess) {
-  //     setAddBtnClass("added-btn");
-  //     clickTimeout = setTimeout(() => {
-  //       setAddBtnClass("");
-  //     }, 1200);
-  //   } else {
-  //     setAddBtnClass("failed-btn");
-  //     setHoverTitle("Out of stock.")
-  //   }
-  // }
 
   useEffect(() => {
     return () => {
@@ -61,15 +45,15 @@ export default function AddToCartButton({ productId }) {
         let newProduct = {
           id: productId,
           name: products[productId].name,
-          qty: 1,
+          qty: 1
         };
         updatedCart = {
           ...cart,
           [productId]: {
             id: newProduct.id,
             name: newProduct.name,
-            qty: newProduct.qty,
-          },
+            qty: newProduct.qty
+          }
         };
         setCart(updatedCart);
         pushToLocalStorage(updatedCart);
@@ -80,7 +64,7 @@ export default function AddToCartButton({ productId }) {
     addBtnVisual(buySuccess);
   };
 
-  const pushToLocalStorage = (updatedCart) => {
+  const pushToLocalStorage = updatedCart => {
     localStorage.setItem("myCart", JSON.stringify(updatedCart));
   };
 
