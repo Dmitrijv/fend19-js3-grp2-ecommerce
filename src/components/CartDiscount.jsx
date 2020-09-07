@@ -7,9 +7,23 @@ export default function CartDiscount() {
   const DISCOUNT_URL = "https://mock-data-api.firebaseio.com/e-commerce/couponCodes.json";
   const discountInput = useRef();
   const [discountList, setDiscountList] = useState({});
-  const { totalPrice, totalPriceWithDiscount, setTotalPriceWithDiscount, discountData, setDiscountData } = useContext(
-    EcommerceContext
-  );
+  const {
+    cart,
+    products,
+    totalPrice,
+    totalPriceWithDiscount,
+    setTotalPriceWithDiscount,
+    discountData,
+    setDiscountData
+  } = useContext(EcommerceContext);
+
+  function getDiscountedPriceForCart(cart) {
+    let totalPrice = Object.values(cart).reduce(function(sum, item) {
+      const price = products[item.id].price;
+      return sum + (Number(item.qty) + Number(price));
+    }, 0);
+    return parseFloat((totalPrice * discountData.discount).toFixed(2));
+  }
 
   const fetchDiscount = () => {
     fetch(DISCOUNT_URL)
@@ -28,9 +42,14 @@ export default function CartDiscount() {
 
     // coupon is legitimate
     if (discountList[inputVal] && discountList[inputVal].valid) {
+      if (Object.keys(cart).length === 0) {
+        document.querySelector("#coupon-feedback-message").textContent = "Cart is empty.";
+        event.preventDefault();
+        return;
+      }
       const discountObj = {
         campaignName: inputVal,
-        discount: discountList[inputVal].discount,
+        discount: discountList[inputVal].discount
       };
       setDiscountData(discountObj);
       let priceWithDiscount = parseFloat((totalPrice * discountObj.discount).toFixed(2));
@@ -68,7 +87,7 @@ export default function CartDiscount() {
 
       <div className="coupons">{discountData.campaignName && <CouponItem coupon={discountData} />}</div>
       <p className="text-right">
-        {totalPriceWithDiscount ? `Discounted total: ${totalPriceWithDiscount} sek` : "No active coupon."}
+        {discountData.discount ? `Discounted total: ${getDiscountedPriceForCart(cart)} sek` : "No active coupon."}
       </p>
     </div>
   );
