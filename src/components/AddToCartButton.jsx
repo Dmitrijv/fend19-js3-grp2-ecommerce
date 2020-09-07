@@ -6,19 +6,33 @@ export default function AddToCartButton({ productId }) {
   const { products, cart, setCart } = useContext(EcommerceContext);
 
   let clickTimeout;
-  const [addBtnClass, setAddBtnClass] = useState("");
+  const [addBtnClass, setAddBtnClass] = useState("added-btn");
+  const [hoverTitle, setHoverTitle] = useState("Add to cart.")
+  const [btnContent, setBtnContent] = useState("🛒")
 
   function addBtnVisual(buySuccess) {
-    if (buySuccess) {
-      setAddBtnClass("added-btn");
-    } else {
+    if (!buySuccess) {
       setAddBtnClass("failed-btn");
+      setHoverTitle("Out of stock.")
+      setBtnContent("🚫")
     }
-
-    clickTimeout = setTimeout(() => {
-      setAddBtnClass("");
-    }, 1200);
   }
+
+  // let clickTimeout;
+  // const [addBtnClass, setAddBtnClass] = useState("");
+  // const [hoverTitle, setHoverTitle] = useState("")
+
+  // function addBtnVisual(buySuccess) {
+  //   if (buySuccess) {
+  //     setAddBtnClass("added-btn");
+  //     clickTimeout = setTimeout(() => {
+  //       setAddBtnClass("");
+  //     }, 1200);
+  //   } else {
+  //     setAddBtnClass("failed-btn");
+  //     setHoverTitle("Out of stock.")
+  //   }
+  // }
 
   useEffect(() => {
     return () => {
@@ -71,8 +85,8 @@ export default function AddToCartButton({ productId }) {
   };
 
   return (
-    <button className={addBtnClass} onClick={addToCart}>
-      add to cart
+    <button className={addBtnClass} title={hoverTitle} onClick={addToCart}>
+      {btnContent}
     </button>
   );
 }

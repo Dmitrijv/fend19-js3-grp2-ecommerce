@@ -1,33 +1,56 @@
+// button {
+//   padding: 7px;
+// }
+
+// .added-btn {
+//   animation: pulseSuccess 1.2s;
+// }
+
+// .failed-btn {
+//   animation: pulseFail 1.2s;
+// }
+
+// @keyframes pulseSuccess {
+//   70% {
+//     background-color: #26f31f;
+//     // font-weight: 900;
+//   }
+//   100% {
+//     background-color: unset;
+//     // font-weight: unset;
+//   }
+// }
+
+// @keyframes pulseFail {
+//   0% {
+//     background-color: #ff4136;
+//     // font-weight: 900;
+//   }
+//   100% {
+//     background-color: unset;
+//     // font-weight: unset;
+//   }
+// }
+
 button {
   padding: 7px;
+  border: 1px solid #b3b2b2;
 }
 
 .added-btn {
-  animation: pulseSuccess 1.2s;
+  &:hover {
+    background-color: #88e085;
+  }
+  &:active {
+    background-color: #26f31f;
+  }
 }
 
 .failed-btn {
-  animation: pulseFail 1.2s;
+  &:hover {
+    background-color: #e7938f;
 }
-
-@keyframes pulseSuccess {
-  70% {
-    background-color: #26f31f;
-    // font-weight: 900;
-  }
-  100% {
-    background-color: unset;
-    // font-weight: unset;
-  }
-}
-
-@keyframes pulseFail {
-  0% {
+  &:active {
     background-color: #ff4136;
-    // font-weight: 900;
-  }
-  100% {
-    background-color: unset;
-    // font-weight: unset;
   }
 }
